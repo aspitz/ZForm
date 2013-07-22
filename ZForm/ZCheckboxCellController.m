@@ -34,13 +34,15 @@
 }
 
 - (void)selectInTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
-    self.checked = !self.isChecked;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)deselectFromTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
-    // deselect the openItemItendPath
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tappedInTableView:(UITableView *)tableView andModel:(ZFormModel *)model atIndexPath:(NSIndexPath *)indexPath{
+    self.checked = !self.isChecked;
 }
 
 @end

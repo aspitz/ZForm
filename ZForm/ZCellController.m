@@ -89,4 +89,7 @@
     }
 }
 
+- (void)tappedInTableView:(UITableView *)tableView andModel:(ZFormModel *)model atIndexPath:(NSIndexPath *)indexPath{
+}
+
 @end

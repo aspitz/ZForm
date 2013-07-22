@@ -111,6 +111,7 @@
     // the new item to open, accounting for the delta
     self.openItemIndexPath = [indexPath indexPathOfRowWithDelta:delta];
     ZCellController *toOpenCellController = self.model[self.openItemIndexPath.row];
+    [toOpenCellController tappedInTableView:tableView andModel:self.model atIndexPath:self.openItemIndexPath];
     
     // make sure that the item being opened isn't that same we just closed
     if (openCellController != toOpenCellController){

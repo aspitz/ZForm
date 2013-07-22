@@ -35,15 +35,16 @@
 
 - (void)selectInTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if ((self.delegate != nil) && [self.delegate respondsToSelector:@selector(cellController:pushViewController:)]){
-        [self.delegate cellController:self pushViewController:[self buildSubform]];
-    }
 }
 
 - (void)deselectFromTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
-    // deselect the openItemItendPath
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tappedInTableView:(UITableView *)tableView andModel:(ZFormModel *)model atIndexPath:(NSIndexPath *)indexPath{
+    if ((self.delegate != nil) && [self.delegate respondsToSelector:@selector(cellController:pushViewController:)]){
+        [self.delegate cellController:self pushViewController:[self buildSubform]];
+    }
 }
 
 
