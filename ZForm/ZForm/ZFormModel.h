@@ -9,26 +9,28 @@
 #import <Foundation/Foundation.h>
 #import "ZCellController.h"
 
+typedef NS_ENUM(NSUInteger,ZFormElementType){
+    ZFormModelTextElement,
+    ZFormModelTextFieldElement,
+    ZFormModelDateElement,
+    ZFormModelSwitchElement,
+    ZFormModelMultiSelectElement,
+    ZFOrmModelCheckboxElement
+};
+
 @interface ZFormModel : NSObject <ZCellControllerDelegate>
 
 @property (nonatomic, weak) NSObject<ZCellControllerDelegate> *delegate;
 
 + (instancetype)model;
 
+- (void)add:(ZFormElementType)elementType withTitle:(NSString *)title;
+
 - (void)addTextFieldWithTitle:(NSString *)title andPlaceholder:(NSString *)placeholder;
-- (void)addTextFieldWithTitle:(NSString *)title;
-
 - (void)addDateWithTitle:(NSString *)title andDate:(NSDate *)date;
-- (void)addDateWithTitle:(NSString *)title;
-
 - (void)addSwitchWithTitle:(NSString *)title andOn:(BOOL)on;
-- (void)addSwitchWithTitle:(NSString *)title;
-
 - (void)addCheckboxWithTitle:(NSString *)title andChecked:(BOOL)checked;
-- (void)addCheckboxWithTitle:(NSString *)title;
-
 - (void)addTitle:(NSString *)title andDetail:(NSString *)detail;
-- (void)addTitle:(NSString *)title;
 
 - (void)addMultiSelectWithTitle:(NSString *)title options:(NSArray *)options andSelectedOptions:(NSArray *)selectedOptions;
 - (void)addMultiSelectWithTitle:(NSString *)title andOptions:(NSArray *)options;

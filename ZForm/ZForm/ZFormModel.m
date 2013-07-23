@@ -51,6 +51,28 @@
 
 #pragma mark - Model construction methods
 
+- (void)add:(ZFormElementType)elementType withTitle:(NSString *)title{
+    switch (elementType) {
+        case ZFormModelTextElement:
+            [self addTitle:title andDetail:nil];
+            break;
+        case ZFormModelTextFieldElement:
+            [self addTextFieldWithTitle:title andPlaceholder:nil];
+            break;
+        case ZFormModelDateElement:
+            [self addDateWithTitle:title andDate:[NSDate date]];
+            break;
+        case ZFormModelSwitchElement:
+            [self addSwitchWithTitle:title andOn:YES];
+            break;
+        case ZFOrmModelCheckboxElement:
+            [self addCheckboxWithTitle:title andChecked:NO];
+            break;
+        default:
+            break;
+    }
+}
+
 - (void)addTextFieldWithTitle:(NSString *)title andPlaceholder:(NSString *)placeholder{
     ZTextFieldCellController *textFieldCellController = [[ZTextFieldCellController alloc]init];
     [textFieldCellController setText:title];
@@ -61,11 +83,6 @@
     [self addObject:textFieldCellController];
 }
 
-- (void)addTextFieldWithTitle:(NSString *)title{
-    [self addTextFieldWithTitle:title andPlaceholder:nil];
-}
-
-
 - (void)addDateWithTitle:(NSString *)title andDate:(NSDate *)date{
     ZDateCellController *dateCellController = [[ZDateCellController alloc]init];
     [dateCellController setText:title];
@@ -73,11 +90,6 @@
     dateCellController.delegate = self;
     [self addObject:dateCellController];
 }
-
-- (void)addDateWithTitle:(NSString *)title{
-    [self addDateWithTitle:title andDate:[NSDate date]];
-}
-
 
 - (void)addSwitchWithTitle:(NSString *)title andOn:(BOOL)on{
     ZSwitchCellController *switchCellController = [[ZSwitchCellController alloc]init];
@@ -87,11 +99,6 @@
     [self addObject:switchCellController];
 }
 
-- (void)addSwitchWithTitle:(NSString *)title{
-    [self addSwitchWithTitle:title andOn:YES];
-}
-
-
 - (void)addCheckboxWithTitle:(NSString *)title andChecked:(BOOL)checked{
     ZCheckboxCellController *checkboxCellController = [[ZCheckboxCellController alloc]init];
     [checkboxCellController setText:title];
@@ -100,20 +107,12 @@
     [self addObject:checkboxCellController];
 }
 
-- (void)addCheckboxWithTitle:(NSString *)title{
-    [self addCheckboxWithTitle:title andChecked:NO];
-}
-
 - (void)addTitle:(NSString *)title andDetail:(NSString *)detail{
     ZCellController *cellController = [[ZCellController alloc]init];
     [cellController setText:title];
     [cellController setDetailText:detail];
     cellController.delegate = self;
     [self addObject:cellController];
-}
-
-- (void)addTitle:(NSString *)title{
-    [self addTitle:title andDetail:nil];
 }
 
 - (void)addMultiSelectWithTitle:(NSString *)title options:(NSArray *)options andSelectedOptions:(NSIndexSet *)selectedOptions{

@@ -7,7 +7,6 @@
 
 #import "ZFormViewController.h"
 #import "TransactionalArray.h"
-#import "ZCellController.h"
 #import "ZDateCellController.h"
 #import "ZTextFieldCellController.h"
 #import "ZFormModel.h"
@@ -17,7 +16,6 @@
 @interface ZFormViewController ()
 
 @property (nonatomic, strong) ZFormModel *model;
-@property (nonatomic, strong) NSIndexPath *selectedItemIndexPath;
 @property (nonatomic, strong) NSIndexPath *openItemIndexPath;
 
 @end
@@ -41,15 +39,13 @@
     ZFormViewController *form = [ZFormViewController formWithName:title model:model andCompletionBlock:complpetionBlock];
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:form];
     
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                               target:form
-                                                                               action:@selector(cancel:)];
-    form.navigationItem.leftBarButtonItem = cancelItem;
+    form.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                         target:form
+                                                                                         action:@selector(cancel:)];
     
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                             target:form
-                                                                             action:@selector(done:)];
-    form.navigationItem.rightBarButtonItem = doneItem;
+    form.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                          target:form
+                                                                                          action:@selector(done:)];
     
     return navigationController;
 }
@@ -121,15 +117,6 @@
         [toOpenCellController selectInTableView:tableView andModel:self.model atIndexPath:self.openItemIndexPath];
     } else {
         self.openItemIndexPath = nil;
-    }
-}
-
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ZCellController *cellController = self.model[indexPath.row];
-    if (cellController.isSelectable){
-        return indexPath;
-    } else {
-        return nil;
     }
 }
 
