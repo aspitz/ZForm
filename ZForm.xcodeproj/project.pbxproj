@@ -17,6 +17,8 @@
 		7985301E179CCDBA00BC3BC5 /* ZCheckboxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7985301D179CCDBA00BC3BC5 /* ZCheckboxCell.m */; };
 		79853021179CCFF800BC3BC5 /* ZCheckboxCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79853020179CCFF800BC3BC5 /* ZCheckboxCellController.m */; };
 		79853024179D48B200BC3BC5 /* ZMultiSelectCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79853023179D48B200BC3BC5 /* ZMultiSelectCellController.m */; };
+		7989BF2C179E20AB001189C9 /* UIView+ViewSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF2B179E20AB001189C9 /* UIView+ViewSearch.m */; };
+		7989BF2F179E20FE001189C9 /* UINavigationController+InterceptBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF2E179E20FE001189C9 /* UINavigationController+InterceptBack.m */; };
 		79C48235179B654400E2B9F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C48234179B654400E2B9F9 /* Foundation.framework */; };
 		79C48237179B654400E2B9F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C48236179B654400E2B9F9 /* CoreGraphics.framework */; };
 		79C48239179B654400E2B9F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C48238179B654400E2B9F9 /* UIKit.framework */; };
@@ -73,6 +75,10 @@
 		79853020179CCFF800BC3BC5 /* ZCheckboxCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCheckboxCellController.m; sourceTree = "<group>"; };
 		79853022179D48B200BC3BC5 /* ZMultiSelectCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMultiSelectCellController.h; sourceTree = "<group>"; };
 		79853023179D48B200BC3BC5 /* ZMultiSelectCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMultiSelectCellController.m; sourceTree = "<group>"; };
+		7989BF2A179E20AB001189C9 /* UIView+ViewSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewSearch.h"; sourceTree = "<group>"; };
+		7989BF2B179E20AB001189C9 /* UIView+ViewSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewSearch.m"; sourceTree = "<group>"; };
+		7989BF2D179E20FE001189C9 /* UINavigationController+InterceptBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+InterceptBack.h"; sourceTree = "<group>"; };
+		7989BF2E179E20FE001189C9 /* UINavigationController+InterceptBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+InterceptBack.m"; sourceTree = "<group>"; };
 		79C48231179B654400E2B9F9 /* ZForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79C48234179B654400E2B9F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		79C48236179B654400E2B9F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -273,6 +279,10 @@
 				79C48272179B65B100E2B9F9 /* NSIndexPath+Utilities.m */,
 				79C48273179B65B100E2B9F9 /* NSString+Utilities.h */,
 				79C48274179B65B100E2B9F9 /* NSString+Utilities.m */,
+				7989BF2A179E20AB001189C9 /* UIView+ViewSearch.h */,
+				7989BF2B179E20AB001189C9 /* UIView+ViewSearch.m */,
+				7989BF2D179E20FE001189C9 /* UINavigationController+InterceptBack.h */,
+				7989BF2E179E20FE001189C9 /* UINavigationController+InterceptBack.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -431,12 +441,14 @@
 				79853017179CBE8900BC3BC5 /* ZCheckbox.m in Sources */,
 				79C48245179B654500E2B9F9 /* ZAppDelegate.m in Sources */,
 				79853024179D48B200BC3BC5 /* ZMultiSelectCellController.m in Sources */,
+				7989BF2C179E20AB001189C9 /* UIView+ViewSearch.m in Sources */,
 				79C4827F179B65CF00E2B9F9 /* ZTextFieldCellController.m in Sources */,
 				79C48282179B65DF00E2B9F9 /* TransactionalArray.m in Sources */,
 				79C48275179B65B100E2B9F9 /* NSIndexPath+Utilities.m in Sources */,
 				79C4827D179B65CF00E2B9F9 /* ZCellController.m in Sources */,
 				79C48294179B668C00E2B9F9 /* ZTextFieldCell.m in Sources */,
 				79C48293179B668C00E2B9F9 /* ZTextField.m in Sources */,
+				7989BF2F179E20FE001189C9 /* UINavigationController+InterceptBack.m in Sources */,
 				79853021179CCFF800BC3BC5 /* ZCheckboxCellController.m in Sources */,
 				79536AC2179B87EC0009347E /* ZFormModel.m in Sources */,
 			);

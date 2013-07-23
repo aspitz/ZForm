@@ -40,4 +40,6 @@
 - (void)removeObjectAtIndex:(NSUInteger)index;
 - (NSUInteger)indexOfObject:(id)anObject;
 
+- (NSArray *)values;
+
 @end

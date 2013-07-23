@@ -46,6 +46,7 @@
     [model addMultiSelectWithTitle:@"People" andOptions:@[@"Ayal", @"Aviv", @"Maya"]];
 
     UINavigationController *form = [ZFormViewController modalFormWithName:@"Form" model:model andCompletionBlock:^(bool cancel, ZFormModel *model) {
+        NSArray *values = [model values];
         [self dismissViewControllerAnimated:YES completion:NULL];
     }];
     [self presentViewController:form animated:YES completion:NULL];

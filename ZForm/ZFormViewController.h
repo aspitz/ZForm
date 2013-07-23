@@ -7,16 +7,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ZCellController.h"
+#import "UINavigationController+InterceptBack.h"
 
 @class ZFormModel;
 
 typedef void (^FormCompletionBlock)(bool cancel, ZFormModel *model);
 
-@interface ZFormViewController : UITableViewController <ZCellControllerDelegate>
+@interface ZFormViewController : UITableViewController <ZCellControllerDelegate, UIViewControllerNavigationExtension>
 
 @property (copy) FormCompletionBlock completionBlock;
 
-+ (instancetype)formWithName:(NSString *)title andModel:(ZFormModel *)model;
++ (instancetype)formWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock;
 + (UINavigationController *)modalFormWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock;
 
 @end

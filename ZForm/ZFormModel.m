@@ -116,7 +116,7 @@
     [self addTitle:title andDetail:nil];
 }
 
-- (void)addMultiSelectWithTitle:(NSString *)title options:(NSArray *)options andSelectedOptions:(NSArray *)selectedOptions{
+- (void)addMultiSelectWithTitle:(NSString *)title options:(NSArray *)options andSelectedOptions:(NSIndexSet *)selectedOptions{
     ZMultiSelectCellController *multiSelectCellController = [[ZMultiSelectCellController alloc]init];
     [multiSelectCellController setText:title];
     multiSelectCellController.options = options;
@@ -153,6 +153,16 @@
 
 - (NSUInteger)indexOfObject:(id)anObject{
     return [self.array indexOfObject:anObject];
+}
+
+- (NSArray *)values{
+    NSMutableArray *values = [NSMutableArray arrayWithCapacity:self.array.count];
+    
+    [self.array enumerateObjectsUsingBlock:^(ZCellController *cellController, NSUInteger idx, BOOL *stop) {
+        [values addObject:cellController.value];
+    }];
+    
+    return values;
 }
 
 @end

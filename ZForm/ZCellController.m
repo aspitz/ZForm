@@ -22,6 +22,8 @@
 
 @implementation ZCellController
 
+#pragma mark Init methods
+
 - (id)init{
     self = [super init];
     if (self) {
@@ -52,6 +54,8 @@
     self.isSelectable = YES;
 }
 
+#pragma mark - 
+
 - (void)setText:(NSString *)text{
     ZTableViewCell *cell = (ZTableViewCell *)self.cell;
     [cell setLabelText:text];
@@ -62,10 +66,18 @@
     [cell setDetailLabelText:text];
 }
 
+- (id)value{
+    return [NSNull null];
+}
+
+#pragma mark -
+
 - (void)setChildCellController:(ZCellController *)childCellController{
     _childCellController = childCellController;
     childCellController.parentCellController = self;
 }
+
+#pragma mark - React to table methods
 
 - (void)selectInTableView:(UITableView *)tableView andModel:(ZFormModel *)model atIndexPath:(NSIndexPath *)indexPath{
     if (self.childCellController != nil){

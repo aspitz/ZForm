@@ -29,6 +29,13 @@
     [self.cell setDetailLabelText:@"(0)"];
 }
 
+- (NSIndexSet *)selectedOptions{
+    if (_selectedOptions == nil){
+        _selectedOptions = [NSIndexSet indexSet];
+    }
+    return _selectedOptions;
+}
+
 - (id)value{
     return self.selectedOptions;
 }
@@ -51,11 +58,21 @@
 - (ZFormViewController *)buildSubform{
     ZFormModel *formModel = [ZFormModel model];
     [self.options enumerateObjectsUsingBlock:^(NSString *option, NSUInteger idx, BOOL *stop) {
-        [formModel addCheckboxWithTitle:option];
+        BOOL checked = [self.selectedOptions containsIndex:idx];
+        [formModel addCheckboxWithTitle:option andChecked:checked];
     }];
     
-    
-    ZFormViewController *formViewController = [ZFormViewController formWithName:self.cell.label.text andModel:formModel];
+    ZFormViewController *formViewController = [ZFormViewController formWithName:self.cell.label.text model:formModel andCompletionBlock:^(bool cancel, ZFormModel *model) {
+        NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
+        [model.values enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            BOOL flag = [obj boolValue];
+            if (flag){
+                [indexSet addIndex:idx];
+            }
+        }];
+        self.selectedOptions = indexSet;
+        [self.cell setDetailLabelText:[NSString stringWithFormat:@"(%d)", self.selectedOptions.count]];
+    }];
     
     return formViewController;
 }

@@ -11,6 +11,6 @@
 @interface ZMultiSelectCellController : ZCellController
 
 @property (nonatomic, strong) NSArray *options;
-@property (nonatomic, strong) NSArray *selectedOptions;
+@property (nonatomic, strong) NSIndexSet *selectedOptions;
 
 @end

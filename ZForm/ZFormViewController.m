@@ -27,17 +27,18 @@
 
 @implementation ZFormViewController
 
-+ (instancetype)formWithName:(NSString *)title andModel:(ZFormModel *)model{
++ (instancetype)formWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock{
     ZFormViewController *form = [[[self class]alloc]init];
     form.title = title;
     form.model = model;
     form.model.delegate = form;
-    
+    form.completionBlock = complpetionBlock;
+
     return form;
 }
 
 + (UINavigationController *)modalFormWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock{
-    ZFormViewController *form = [ZFormViewController formWithName:title andModel:model];
+    ZFormViewController *form = [ZFormViewController formWithName:title model:model andCompletionBlock:complpetionBlock];
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:form];
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -49,8 +50,6 @@
                                                                              target:form
                                                                              action:@selector(done:)];
     form.navigationItem.rightBarButtonItem = doneItem;
-    
-    form.completionBlock = complpetionBlock;
     
     return navigationController;
 }
@@ -66,11 +65,15 @@
 
 #pragma mark - Modal actions
 - (IBAction)done:(id)sender{
-    self.completionBlock(NO, self.model);
+    if (self.completionBlock != nil){
+        self.completionBlock(NO, self.model);
+    }
 }
 
 - (IBAction)cancel:(id)sender{
-    self.completionBlock(YES, self.model);
+    if (self.completionBlock != nil){
+        self.completionBlock(YES, self.model);
+    }
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -139,6 +142,16 @@
 
 - (void)cellController:(ZCellController *)cellController pushViewController:(UIViewController *)viewController{
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+#pragma mark - UIViewControllerNavigationExtension methods
+- (BOOL)shouldPop{
+
+    if (self.completionBlock != nil){
+        self.completionBlock(YES, self.model);
+    }
+    
+    return YES;
 }
 
 @end
