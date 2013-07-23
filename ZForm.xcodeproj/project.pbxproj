@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		79536AC2179B87EC0009347E /* ZFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79536AC1179B87EC0009347E /* ZFormModel.m */; };
-		79853011179CBE2C00BC3BC5 /* checkmark2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7985300D179CBE2C00BC3BC5 /* checkmark2.png */; };
-		79853012179CBE2C00BC3BC5 /* checkmark2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7985300E179CBE2C00BC3BC5 /* checkmark2@2x.png */; };
-		79853013179CBE2C00BC3BC5 /* uncheckmark2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7985300F179CBE2C00BC3BC5 /* uncheckmark2.png */; };
-		79853014179CBE2C00BC3BC5 /* uncheckmark2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79853010179CBE2C00BC3BC5 /* uncheckmark2@2x.png */; };
-		79853017179CBE8900BC3BC5 /* ZCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 79853016179CBE8900BC3BC5 /* ZCheckbox.m */; };
 		7985301A179CC71F00BC3BC5 /* ZSwitchCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79853019179CC71F00BC3BC5 /* ZSwitchCellController.m */; };
 		7985301E179CCDBA00BC3BC5 /* ZCheckboxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7985301D179CCDBA00BC3BC5 /* ZCheckboxCell.m */; };
 		79853021179CCFF800BC3BC5 /* ZCheckboxCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79853020179CCFF800BC3BC5 /* ZCheckboxCellController.m */; };
 		79853024179D48B200BC3BC5 /* ZMultiSelectCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79853023179D48B200BC3BC5 /* ZMultiSelectCellController.m */; };
 		7989BF2C179E20AB001189C9 /* UIView+ViewSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF2B179E20AB001189C9 /* UIView+ViewSearch.m */; };
 		7989BF2F179E20FE001189C9 /* UINavigationController+InterceptBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF2E179E20FE001189C9 /* UINavigationController+InterceptBack.m */; };
+		7989BF34179E2937001189C9 /* checkmark2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7989BF30179E2937001189C9 /* checkmark2.png */; };
+		7989BF35179E2937001189C9 /* checkmark2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7989BF31179E2937001189C9 /* checkmark2@2x.png */; };
+		7989BF36179E2937001189C9 /* uncheckmark2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7989BF32179E2937001189C9 /* uncheckmark2.png */; };
+		7989BF37179E2937001189C9 /* uncheckmark2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7989BF33179E2937001189C9 /* uncheckmark2@2x.png */; };
+		7989BF3A179E296E001189C9 /* ZCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF39179E296E001189C9 /* ZCheckbox.m */; };
 		79C48235179B654400E2B9F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C48234179B654400E2B9F9 /* Foundation.framework */; };
 		79C48237179B654400E2B9F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C48236179B654400E2B9F9 /* CoreGraphics.framework */; };
 		79C48239179B654400E2B9F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C48238179B654400E2B9F9 /* UIKit.framework */; };
@@ -61,12 +61,6 @@
 /* Begin PBXFileReference section */
 		79536AC0179B87EC0009347E /* ZFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFormModel.h; sourceTree = "<group>"; };
 		79536AC1179B87EC0009347E /* ZFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFormModel.m; sourceTree = "<group>"; };
-		7985300D179CBE2C00BC3BC5 /* checkmark2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark2.png; sourceTree = "<group>"; };
-		7985300E179CBE2C00BC3BC5 /* checkmark2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark2@2x.png"; sourceTree = "<group>"; };
-		7985300F179CBE2C00BC3BC5 /* uncheckmark2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheckmark2.png; sourceTree = "<group>"; };
-		79853010179CBE2C00BC3BC5 /* uncheckmark2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheckmark2@2x.png"; sourceTree = "<group>"; };
-		79853015179CBE8900BC3BC5 /* ZCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCheckbox.h; sourceTree = "<group>"; };
-		79853016179CBE8900BC3BC5 /* ZCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCheckbox.m; sourceTree = "<group>"; };
 		79853018179CC71F00BC3BC5 /* ZSwitchCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSwitchCellController.h; sourceTree = "<group>"; };
 		79853019179CC71F00BC3BC5 /* ZSwitchCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSwitchCellController.m; sourceTree = "<group>"; };
 		7985301C179CCDBA00BC3BC5 /* ZCheckboxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCheckboxCell.h; sourceTree = "<group>"; };
@@ -79,6 +73,12 @@
 		7989BF2B179E20AB001189C9 /* UIView+ViewSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewSearch.m"; sourceTree = "<group>"; };
 		7989BF2D179E20FE001189C9 /* UINavigationController+InterceptBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+InterceptBack.h"; sourceTree = "<group>"; };
 		7989BF2E179E20FE001189C9 /* UINavigationController+InterceptBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+InterceptBack.m"; sourceTree = "<group>"; };
+		7989BF30179E2937001189C9 /* checkmark2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkmark2.png; path = Checkbox/assets/checkmark2.png; sourceTree = "<group>"; };
+		7989BF31179E2937001189C9 /* checkmark2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkmark2@2x.png"; path = "Checkbox/assets/checkmark2@2x.png"; sourceTree = "<group>"; };
+		7989BF32179E2937001189C9 /* uncheckmark2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uncheckmark2.png; path = Checkbox/assets/uncheckmark2.png; sourceTree = "<group>"; };
+		7989BF33179E2937001189C9 /* uncheckmark2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "uncheckmark2@2x.png"; path = "Checkbox/assets/uncheckmark2@2x.png"; sourceTree = "<group>"; };
+		7989BF38179E296E001189C9 /* ZCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZCheckbox.h; path = Checkbox/ZCheckbox.h; sourceTree = "<group>"; };
+		7989BF39179E296E001189C9 /* ZCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZCheckbox.m; path = Checkbox/ZCheckbox.m; sourceTree = "<group>"; };
 		79C48231179B654400E2B9F9 /* ZForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79C48234179B654400E2B9F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		79C48236179B654400E2B9F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,12 +153,9 @@
 		7985300C179CBE1C00BC3BC5 /* Checkbox */ = {
 			isa = PBXGroup;
 			children = (
-				7985300D179CBE2C00BC3BC5 /* checkmark2.png */,
-				7985300E179CBE2C00BC3BC5 /* checkmark2@2x.png */,
-				7985300F179CBE2C00BC3BC5 /* uncheckmark2.png */,
-				79853010179CBE2C00BC3BC5 /* uncheckmark2@2x.png */,
-				79853015179CBE8900BC3BC5 /* ZCheckbox.h */,
-				79853016179CBE8900BC3BC5 /* ZCheckbox.m */,
+				7989BF3B179E2973001189C9 /* assets */,
+				7989BF38179E296E001189C9 /* ZCheckbox.h */,
+				7989BF39179E296E001189C9 /* ZCheckbox.m */,
 			);
 			name = Checkbox;
 			sourceTree = "<group>";
@@ -171,6 +168,17 @@
 				7985300C179CBE1C00BC3BC5 /* Checkbox */,
 			);
 			name = Controls;
+			sourceTree = "<group>";
+		};
+		7989BF3B179E2973001189C9 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				7989BF30179E2937001189C9 /* checkmark2.png */,
+				7989BF31179E2937001189C9 /* checkmark2@2x.png */,
+				7989BF32179E2937001189C9 /* uncheckmark2.png */,
+				7989BF33179E2937001189C9 /* uncheckmark2@2x.png */,
+			);
+			name = assets;
 			sourceTree = "<group>";
 		};
 		79C48228179B654400E2B9F9 = {
@@ -402,13 +410,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79853011179CBE2C00BC3BC5 /* checkmark2.png in Resources */,
-				79853012179CBE2C00BC3BC5 /* checkmark2@2x.png in Resources */,
 				79C4824D179B654500E2B9F9 /* Images.xcassets in Resources */,
+				7989BF35179E2937001189C9 /* checkmark2@2x.png in Resources */,
 				79C4823F179B654400E2B9F9 /* InfoPlist.strings in Resources */,
-				79853014179CBE2C00BC3BC5 /* uncheckmark2@2x.png in Resources */,
+				7989BF34179E2937001189C9 /* checkmark2.png in Resources */,
 				79C48248179B654500E2B9F9 /* Main.storyboard in Resources */,
-				79853013179CBE2C00BC3BC5 /* uncheckmark2.png in Resources */,
+				7989BF37179E2937001189C9 /* uncheckmark2@2x.png in Resources */,
+				7989BF36179E2937001189C9 /* uncheckmark2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,11 +446,11 @@
 				79C48285179B666900E2B9F9 /* ZTableViewCell.m in Sources */,
 				79C48291179B668C00E2B9F9 /* ZLabelControlCell.m in Sources */,
 				79C4827E179B65CF00E2B9F9 /* ZDateCellController.m in Sources */,
-				79853017179CBE8900BC3BC5 /* ZCheckbox.m in Sources */,
 				79C48245179B654500E2B9F9 /* ZAppDelegate.m in Sources */,
 				79853024179D48B200BC3BC5 /* ZMultiSelectCellController.m in Sources */,
 				7989BF2C179E20AB001189C9 /* UIView+ViewSearch.m in Sources */,
 				79C4827F179B65CF00E2B9F9 /* ZTextFieldCellController.m in Sources */,
+				7989BF3A179E296E001189C9 /* ZCheckbox.m in Sources */,
 				79C48282179B65DF00E2B9F9 /* TransactionalArray.m in Sources */,
 				79C48275179B65B100E2B9F9 /* NSIndexPath+Utilities.m in Sources */,
 				79C4827D179B65CF00E2B9F9 /* ZCellController.m in Sources */,
