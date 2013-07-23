@@ -65,8 +65,33 @@
         case ZFormModelSwitchElement:
             [self addSwitchWithTitle:title andOn:YES];
             break;
-        case ZFOrmModelCheckboxElement:
+        case ZFormModelCheckboxElement:
             [self addCheckboxWithTitle:title andChecked:NO];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)add:(ZFormElementType)elementType withTitle:(NSString *)title andAttributes:(NSDictionary *)attributes{
+    switch (elementType) {
+        case ZFormModelCheckboxElement:
+            [self addCheckboxWithTitle:title andChecked:[attributes[@"checked"] boolValue]];
+            break;
+        case ZFormModelDateElement:
+            [self addDateWithTitle:(NSString *)title andDate:attributes[@"date"]];
+            break;
+        case ZFormModelMultiSelectElement:
+            [self addMultiSelectWithTitle:title options:attributes[@"options"] andSelectedOptions:attributes[@"selectedOptions"]];
+            break;
+        case ZFormModelSwitchElement:
+            [self addSwitchWithTitle:title andOn:[attributes[@"on"] boolValue]];
+            break;
+        case ZFormModelTextElement:
+            [self addTitle:title andDetail:attributes[@"detail"]];
+            break;
+        case ZFormModelTextFieldElement:
+            [self addTextFieldWithTitle:title andPlaceholder:attributes[@"placeholder"]];
             break;
         default:
             break;

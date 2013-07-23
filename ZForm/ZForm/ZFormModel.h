@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger,ZFormElementType){
     ZFormModelDateElement,
     ZFormModelSwitchElement,
     ZFormModelMultiSelectElement,
-    ZFOrmModelCheckboxElement
+    ZFormModelCheckboxElement
 };
 
 @interface ZFormModel : NSObject <ZCellControllerDelegate>
@@ -25,15 +25,7 @@ typedef NS_ENUM(NSUInteger,ZFormElementType){
 + (instancetype)model;
 
 - (void)add:(ZFormElementType)elementType withTitle:(NSString *)title;
-
-- (void)addTextFieldWithTitle:(NSString *)title andPlaceholder:(NSString *)placeholder;
-- (void)addDateWithTitle:(NSString *)title andDate:(NSDate *)date;
-- (void)addSwitchWithTitle:(NSString *)title andOn:(BOOL)on;
-- (void)addCheckboxWithTitle:(NSString *)title andChecked:(BOOL)checked;
-- (void)addTitle:(NSString *)title andDetail:(NSString *)detail;
-
-- (void)addMultiSelectWithTitle:(NSString *)title options:(NSArray *)options andSelectedOptions:(NSArray *)selectedOptions;
-- (void)addMultiSelectWithTitle:(NSString *)title andOptions:(NSArray *)options;
+- (void)add:(ZFormElementType)elementType withTitle:(NSString *)title andAttributes:(NSDictionary *)attributes;
 
 - (NSUInteger)count;
 - (id)objectAtIndexedSubscript:(NSUInteger)idx;

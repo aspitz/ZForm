@@ -29,13 +29,13 @@
     [super viewDidAppear:animated];
     
     ZFormModel *model = [ZFormModel model];
-    [model addTitle:@"Title" andDetail:@"Detail"];
-    [model addTextFieldWithTitle:@"Event Name:" andPlaceholder:@"event"];
+    [model add:ZFormModelTextElement withTitle:@"Title" andAttributes:@{@"detail":@"detail"}];
+    [model add:ZFormModelTextFieldElement withTitle:@"Event Name:" andAttributes:@{@"placeholder":@"event"}];
     [model add:ZFormModelDateElement withTitle:@"Start Date:"];
     [model add:ZFormModelDateElement withTitle:@"End Date:"];
     [model add:ZFormModelSwitchElement withTitle:@"Do something:"];
-    [model add:ZFOrmModelCheckboxElement withTitle:@"Check something or other"];
-    [model addMultiSelectWithTitle:@"People" andOptions:@[@"Ayal", @"Aviv", @"Maya"]];
+    [model add:ZFormModelCheckboxElement withTitle:@"Check something or other"];
+    [model add:ZFormModelMultiSelectElement withTitle:@"People" andAttributes:@{@"options":@[@"Ayal", @"Aviv", @"Maya"]}];
 
     UINavigationController *form = [ZFormViewController modalFormWithName:@"Form" model:model andCompletionBlock:^(bool cancel, ZFormModel *model) {
         NSArray *values = [model values];
