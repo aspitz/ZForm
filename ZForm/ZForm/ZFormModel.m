@@ -52,25 +52,23 @@
 #pragma mark - Model construction methods
 
 - (void)add:(ZFormElementType)elementType withTitle:(NSString *)title{
+    NSDictionary *attributes = nil;
+    
     switch (elementType) {
-        case ZFormModelTextElement:
-            [self addTitle:title andDetail:nil];
-            break;
-        case ZFormModelTextFieldElement:
-            [self addTextFieldWithTitle:title andPlaceholder:nil];
-            break;
         case ZFormModelDateElement:
-            [self addDateWithTitle:title andDate:[NSDate date]];
+            attributes = @{@"date": [NSDate date]};
             break;
         case ZFormModelSwitchElement:
-            [self addSwitchWithTitle:title andOn:YES];
+            attributes = @{@"on": @(YES)};
             break;
         case ZFormModelCheckboxElement:
-            [self addCheckboxWithTitle:title andChecked:NO];
+            attributes = @{@"checked": @(YES)};
             break;
         default:
             break;
     }
+    
+    [self add:elementType withTitle:title andAttributes:attributes];
 }
 
 - (void)add:(ZFormElementType)elementType withTitle:(NSString *)title andAttributes:(NSDictionary *)attributes{
@@ -147,10 +145,6 @@
     multiSelectCellController.selectedOptions = selectedOptions;
     multiSelectCellController.delegate = self;
     [self addObject:multiSelectCellController];
-}
-
-- (void)addMultiSelectWithTitle:(NSString *)title andOptions:(NSArray *)options{
-    [self addMultiSelectWithTitle:title options:options andSelectedOptions:nil];
 }
 
 #pragma mark - Model access methods

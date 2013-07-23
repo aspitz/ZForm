@@ -59,7 +59,7 @@
     ZFormModel *formModel = [ZFormModel model];
     [self.options enumerateObjectsUsingBlock:^(NSString *option, NSUInteger idx, BOOL *stop) {
         BOOL checked = [self.selectedOptions containsIndex:idx];
-        [formModel addCheckboxWithTitle:option andChecked:checked];
+        [formModel add:ZFormModelCheckboxElement withTitle:option andAttributes:@{@"checked":@(checked)}];
     }];
     
     ZFormViewController *formViewController = [ZFormViewController formWithName:self.cell.label.text model:formModel andCompletionBlock:^(bool cancel, ZFormModel *model) {
