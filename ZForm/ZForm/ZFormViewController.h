@@ -15,10 +15,8 @@ typedef void (^FormCompletionBlock)(bool cancel, ZFormModel *model);
 
 @interface ZFormViewController : UITableViewController <ZCellControllerDelegate, UIViewControllerNavigationExtension>
 
-@property (copy) FormCompletionBlock completionBlock;
-
-+ (instancetype)formWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock;
-+ (UINavigationController *)modalFormWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock;
-+ (void)presentModalFormOnTopOf:(UIViewController *)viewController WithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock;
++ (instancetype)formWithModel:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock;
++ (UINavigationController *)modalFormWithModel:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock;
++ (void)presentModalFormOnTopOf:(UIViewController *)viewController withModel:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock;
 
 @end

@@ -16,6 +16,7 @@
 @interface ZFormViewController ()
 
 @property (nonatomic, strong) ZFormModel *model;
+@property (copy) FormCompletionBlock completionBlock;
 @property (nonatomic, strong) NSIndexPath *openItemIndexPath;
 
 @end
@@ -25,18 +26,18 @@
 
 @implementation ZFormViewController
 
-+ (instancetype)formWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock{
+@synthesize model = _model;
+
++ (instancetype)formWithModel:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock{
     ZFormViewController *form = [[[self class]alloc]init];
-    form.title = title;
     form.model = model;
-    form.model.delegate = form;
     form.completionBlock = complpetionBlock;
 
     return form;
 }
 
-+ (UINavigationController *)modalFormWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock{
-    ZFormViewController *form = [ZFormViewController formWithName:title model:model andCompletionBlock:completionBlock];
++ (UINavigationController *)modalFormWithModel:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock{
+    ZFormViewController *form = [ZFormViewController formWithModel:model andCompletionBlock:completionBlock];
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:form];
     
     form.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -50,19 +51,26 @@
     return navigationController;
 }
 
-+ (void)presentModalFormOnTopOf:(UIViewController *)viewController WithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock{
++ (void)presentModalFormOnTopOf:(UIViewController *)viewController withModel:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock{
 
-    UINavigationController *modalForm = [[self class]modalFormWithName:title model:model andCompletionBlock:completionBlock];
+    UINavigationController *modalForm = [[self class]modalFormWithModel:model andCompletionBlock:completionBlock];
     [viewController presentViewController:modalForm animated:YES completion:NULL];
 }
 
+#pragma mark - Model methods
+
 - (ZFormModel *)model{
     if (_model == nil){
-        _model = [ZFormModel model];
-        _model.delegate = self;
+        self.model = [ZFormModel model];
     }
     
     return _model;
+}
+
+- (void)setModel:(ZFormModel *)model{
+    _model = model;
+    _model.delegate = self;
+    self.title = model.title;
 }
 
 #pragma mark - Modal actions

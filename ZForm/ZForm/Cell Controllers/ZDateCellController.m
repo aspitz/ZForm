@@ -35,6 +35,8 @@
 - (void)setup{
     [super setup];
     
+    [self.cell setLabelText:@""];
+    
     self.childCellController = [[ZDateSubcellController alloc]init];
     self.date = self.childCellController.date;
 

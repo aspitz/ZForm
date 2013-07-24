@@ -49,7 +49,7 @@
         [formModel add:ZFormModelCheckboxElement withTitle:option andAttributes:@{@"checked":@(checked)}];
     }];
     
-    ZFormViewController *formViewController = [ZFormViewController formWithName:self.cell.label.text model:formModel andCompletionBlock:^(bool cancel, ZFormModel *model) {
+    ZFormViewController *formViewController = [ZFormViewController formWithModel:formModel andCompletionBlock:^(bool cancel, ZFormModel *model){
         NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
         [model.values enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             BOOL flag = [obj boolValue];

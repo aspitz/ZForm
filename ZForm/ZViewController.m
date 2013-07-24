@@ -28,6 +28,7 @@
     [super viewDidAppear:animated];
     
     ZFormModel *formModel = [ZFormModel model];
+    formModel.title = @"Form";
     [formModel add:ZFormModelTextElement withTitle:@"Title" andAttributes:@{@"detail":@"detail"}];
     [formModel add:ZFormModelTextFieldElement withTitle:@"Event Name:" andAttributes:@{@"placeholder":@"event"}];
     [formModel add:ZFormModelDateElement withTitle:@"Start Date:"];
@@ -36,7 +37,7 @@
     [formModel add:ZFormModelCheckboxElement withTitle:@"Check something or other"];
     [formModel add:ZFormModelMultiSelectElement withTitle:@"People" andAttributes:@{@"options":@[@"Ayal", @"Aviv", @"Maya"]}];
 
-    [ZFormViewController presentModalFormOnTopOf:self WithName:@"Form" model:formModel andCompletionBlock:^(bool cancel, ZFormModel *model) {
+    [ZFormViewController presentModalFormOnTopOf:self withModel:formModel andCompletionBlock:^(bool cancel, ZFormModel *model) {
         NSArray *values = [model values];
         [self dismissViewControllerAnimated:YES completion:NULL];
     }];

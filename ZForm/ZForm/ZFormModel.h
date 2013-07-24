@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger,ZFormElementType){
 @interface ZFormModel : NSObject <ZCellControllerDelegate>
 
 @property (nonatomic, weak) NSObject<ZCellControllerDelegate> *delegate;
+@property (copy) NSString *title;
 
 + (instancetype)model;
 
