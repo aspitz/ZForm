@@ -16,7 +16,6 @@
 @interface ZCellController ()
 
 @property (nonatomic, assign) CGFloat cellHeight;
-@property (nonatomic, assign) BOOL isSelectable;
 
 @end
 
@@ -51,22 +50,19 @@
 - (void)setup{
     self.cell = [[ZTableViewCell alloc]initWithReuseIdentifier:[NSString UUID]];
     self.cellHeight = 44.0;
-    self.isSelectable = YES;
 }
 
 #pragma mark - 
 
-- (void)setText:(NSString *)text{
-    ZTableViewCell *cell = (ZTableViewCell *)self.cell;
-    [cell setLabelText:text];
+- (void)setLabelText:(NSString *)text{
+    [self.cell setLabelText:text];
 }
 
-- (void)setDetailText:(NSString *)text{
-    ZTableViewCell *cell = (ZTableViewCell *)self.cell;
-    [cell setDetailLabelText:text];
+- (void)setDetailLabelText:(NSString *)text{
+    [self.cell setDetailLabelText:text];
 }
 
-- (id)value{
+- (id)cellValue{
     return [NSNull null];
 }
 

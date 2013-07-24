@@ -98,7 +98,7 @@
 
 - (void)addTextFieldWithTitle:(NSString *)title andPlaceholder:(NSString *)placeholder{
     ZTextFieldCellController *textFieldCellController = [[ZTextFieldCellController alloc]init];
-    [textFieldCellController setText:title];
+    [textFieldCellController setLabelText:title];
     if (placeholder != nil){
         [textFieldCellController setPlaceholder:placeholder];
     }
@@ -108,7 +108,7 @@
 
 - (void)addDateWithTitle:(NSString *)title andDate:(NSDate *)date{
     ZDateCellController *dateCellController = [[ZDateCellController alloc]init];
-    [dateCellController setText:title];
+    [dateCellController setLabelText:title];
     [dateCellController setDate:date];
     dateCellController.delegate = self;
     [self addObject:dateCellController];
@@ -116,7 +116,7 @@
 
 - (void)addSwitchWithTitle:(NSString *)title andOn:(BOOL)on{
     ZSwitchCellController *switchCellController = [[ZSwitchCellController alloc]init];
-    [switchCellController setText:title];
+    [switchCellController setLabelText:title];
     [switchCellController setOn:on];
     switchCellController.delegate = self;
     [self addObject:switchCellController];
@@ -124,7 +124,7 @@
 
 - (void)addCheckboxWithTitle:(NSString *)title andChecked:(BOOL)checked{
     ZCheckboxCellController *checkboxCellController = [[ZCheckboxCellController alloc]init];
-    [checkboxCellController setText:title];
+    [checkboxCellController setLabelText:title];
     [checkboxCellController setChecked:checked];
     checkboxCellController.delegate = self;
     [self addObject:checkboxCellController];
@@ -132,15 +132,15 @@
 
 - (void)addTitle:(NSString *)title andDetail:(NSString *)detail{
     ZCellController *cellController = [[ZCellController alloc]init];
-    [cellController setText:title];
-    [cellController setDetailText:detail];
+    [cellController setLabelText:title];
+    [cellController setDetailLabelText:detail];
     cellController.delegate = self;
     [self addObject:cellController];
 }
 
 - (void)addMultiSelectWithTitle:(NSString *)title options:(NSArray *)options andSelectedOptions:(NSIndexSet *)selectedOptions{
     ZMultiSelectCellController *multiSelectCellController = [[ZMultiSelectCellController alloc]init];
-    [multiSelectCellController setText:title];
+    [multiSelectCellController setLabelText:title];
     multiSelectCellController.options = options;
     multiSelectCellController.selectedOptions = selectedOptions;
     multiSelectCellController.delegate = self;
@@ -177,7 +177,7 @@
     NSMutableArray *values = [NSMutableArray arrayWithCapacity:self.array.count];
     
     [self.array enumerateObjectsUsingBlock:^(ZCellController *cellController, NSUInteger idx, BOOL *stop) {
-        [values addObject:cellController.value];
+        [values addObject:cellController.cellValue];
     }];
     
     return values;

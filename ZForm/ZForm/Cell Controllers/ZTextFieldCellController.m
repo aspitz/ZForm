@@ -9,10 +9,6 @@
 #import "ZTextFieldCellController.h"
 #import "NSString+Utilities.h"
 
-@interface ZTextFieldCellController ()
-
-@end
-
 @implementation ZTextFieldCellController
 
 - (void)setup{
@@ -26,19 +22,16 @@
     self.cell.placeholder = placeholder;
 }
 
-- (id)value{
+- (id)cellValue{
     return self.cell.control.text;
 }
 
 - (void)selectInTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
     [self.cell.control becomeFirstResponder];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)deselectFromTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
     [self.cell.control resignFirstResponder];
-    // deselect the openItemItendPath
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{

@@ -124,6 +124,7 @@
 		79C4825F179B654500E2B9F9 /* ZFormTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFormTests.m; sourceTree = "<group>"; };
 		79C48280179B65DF00E2B9F9 /* TransactionalArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionalArray.h; sourceTree = "<group>"; };
 		79C48281179B65DF00E2B9F9 /* TransactionalArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionalArray.m; sourceTree = "<group>"; };
+		79E1A60A179F376100265797 /* ZForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZForm.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +260,7 @@
 		79C48269179B655600E2B9F9 /* ZForm */ = {
 			isa = PBXGroup;
 			children = (
+				79E1A60A179F376100265797 /* ZForm.h */,
 				7989BF58179E2B12001189C9 /* ZFormViewController.h */,
 				7989BF59179E2B12001189C9 /* ZFormViewController.m */,
 				7989BF56179E2B12001189C9 /* ZFormModel.h */,

@@ -13,12 +13,6 @@
 
 #import "NSString+Utilities.h"
 
-@interface ZMultiSelectCellController ()
-
-@property (nonatomic, strong) ZTableViewCell *cell;
-
-@end
-
 @implementation ZMultiSelectCellController
 
 - (void)setup{
@@ -26,6 +20,7 @@
     
     self.cell = [[ZTableViewCell alloc]initWithReuseIdentifier:[NSString UUID]];
     self.cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    [self.cell setLabelText:@""];
     [self.cell setDetailLabelText:@"(0)"];
 }
 
@@ -36,16 +31,8 @@
     return _selectedOptions;
 }
 
-- (id)value{
+- (id)cellValue{
     return self.selectedOptions;
-}
-
-- (void)selectInTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)deselectFromTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)tappedInTableView:(UITableView *)tableView andModel:(ZFormModel *)model atIndexPath:(NSIndexPath *)indexPath{

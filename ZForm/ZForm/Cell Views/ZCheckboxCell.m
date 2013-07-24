@@ -14,6 +14,8 @@
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithReuseIdentifier:reuseIdentifier];
     if (self) {
+        [self setLabelText:@""];
+
         self.control = [ZCheckbox checkbox];
         self.leftView = self.control;
         self.rightView = self.label;

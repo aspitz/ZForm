@@ -6,9 +6,9 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "ZTableViewCell.h"
 
-@interface ZDateCell : UITableViewCell
+@interface ZDateCell : ZTableViewCell
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
 

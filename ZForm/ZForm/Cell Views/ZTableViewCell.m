@@ -11,11 +11,7 @@
 @implementation ZTableViewCell
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier{
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-    if (self) {
-        [self setLabelText:@""];
-    }
-    return self;
+    return [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 }
 
 - (void)setLeftView:(UIView *)leftView{

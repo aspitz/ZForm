@@ -9,10 +9,6 @@
 #import "ZCheckboxCellController.h"
 #import "NSString+Utilities.h"
 
-@interface ZCheckboxCellController ()
-
-@end
-
 @implementation ZCheckboxCellController
 
 - (void)setup{
@@ -29,16 +25,8 @@
     return self.cell.isChecked;
 }
 
-- (id)value{
+- (id)cellValue{
     return @(self.isChecked);
-}
-
-- (void)selectInTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)deselectFromTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)tappedInTableView:(UITableView *)tableView andModel:(ZFormModel *)model atIndexPath:(NSIndexPath *)indexPath{

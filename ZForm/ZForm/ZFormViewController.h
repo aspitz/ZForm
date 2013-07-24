@@ -19,5 +19,6 @@ typedef void (^FormCompletionBlock)(bool cancel, ZFormModel *model);
 
 + (instancetype)formWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock;
 + (UINavigationController *)modalFormWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock;
++ (void)presentModalFormOnTopOf:(UIViewController *)viewController WithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock;
 
 @end

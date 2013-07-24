@@ -9,10 +9,6 @@
 #import "ZSwitchCellController.h"
 #import "NSString+Utilities.h"
 
-@interface ZSwitchCellController ()
-
-@end
-
 @implementation ZSwitchCellController
 
 - (void)setup{
@@ -29,16 +25,8 @@
     return self.cell.on;
 }
 
-- (id)value{
+- (id)cellValue{
     return @(self.on);
-}
-
-- (void)selectInTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)deselectFromTableView:(UITableView *)tableView andModel:(NSMutableArray *)model atIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)tappedInTableView:(UITableView *)tableView andModel:(ZFormModel *)model atIndexPath:(NSIndexPath *)indexPath{

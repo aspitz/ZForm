@@ -14,6 +14,7 @@
     if (self) {
         self.control = control;
         self.rightView = self.control;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }

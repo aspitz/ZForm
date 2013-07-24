@@ -7,8 +7,7 @@
 //
 
 #import "ZViewController.h"
-#import "ZFormModel.h"
-#import "ZFormViewController.h"
+#import "ZForm.h"
 
 @interface ZViewController ()
 
@@ -28,20 +27,19 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    ZFormModel *model = [ZFormModel model];
-    [model add:ZFormModelTextElement withTitle:@"Title" andAttributes:@{@"detail":@"detail"}];
-    [model add:ZFormModelTextFieldElement withTitle:@"Event Name:" andAttributes:@{@"placeholder":@"event"}];
-    [model add:ZFormModelDateElement withTitle:@"Start Date:"];
-    [model add:ZFormModelDateElement withTitle:@"End Date:"];
-    [model add:ZFormModelSwitchElement withTitle:@"Do something:"];
-    [model add:ZFormModelCheckboxElement withTitle:@"Check something or other"];
-    [model add:ZFormModelMultiSelectElement withTitle:@"People" andAttributes:@{@"options":@[@"Ayal", @"Aviv", @"Maya"]}];
+    ZFormModel *formModel = [ZFormModel model];
+    [formModel add:ZFormModelTextElement withTitle:@"Title" andAttributes:@{@"detail":@"detail"}];
+    [formModel add:ZFormModelTextFieldElement withTitle:@"Event Name:" andAttributes:@{@"placeholder":@"event"}];
+    [formModel add:ZFormModelDateElement withTitle:@"Start Date:"];
+    [formModel add:ZFormModelDateElement withTitle:@"End Date:"];
+    [formModel add:ZFormModelSwitchElement withTitle:@"Do something:"];
+    [formModel add:ZFormModelCheckboxElement withTitle:@"Check something or other"];
+    [formModel add:ZFormModelMultiSelectElement withTitle:@"People" andAttributes:@{@"options":@[@"Ayal", @"Aviv", @"Maya"]}];
 
-    UINavigationController *form = [ZFormViewController modalFormWithName:@"Form" model:model andCompletionBlock:^(bool cancel, ZFormModel *model) {
+    [ZFormViewController presentModalFormOnTopOf:self WithName:@"Form" model:formModel andCompletionBlock:^(bool cancel, ZFormModel *model) {
         NSArray *values = [model values];
         [self dismissViewControllerAnimated:YES completion:NULL];
     }];
-    [self presentViewController:form animated:YES completion:NULL];
 }
 
 @end

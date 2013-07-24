@@ -20,20 +20,18 @@
 @interface ZCellController : UIViewController
 
 @property (nonatomic, weak) NSObject<ZCellControllerDelegate> *delegate;
-@property (nonatomic, strong) UITableViewCell *cell;
+@property (nonatomic, strong) ZTableViewCell *cell;
 
 @property (nonatomic, weak) ZCellController *parentCellController;
 @property (nonatomic, strong) ZCellController *childCellController;
 
 @property (nonatomic, readonly) CGFloat cellHeight;
-@property (nonatomic, readonly) BOOL isSelectable;
-
-@property (nonatomic, readonly) id value;
+@property (nonatomic, readonly) id cellValue;
 
 - (void)setup;
 
-- (void)setText:(NSString *)text;
-- (void)setDetailText:(NSString *)text;
+- (void)setLabelText:(NSString *)text;
+- (void)setDetailLabelText:(NSString *)text;
 
 - (void)selectInTableView:(UITableView *)tableView andModel:(ZFormModel *)model atIndexPath:(NSIndexPath *)indexPath;
 - (void)deselectFromTableView:(UITableView *)tableView andModel:(ZFormModel *)model atIndexPath:(NSIndexPath *)indexPath;

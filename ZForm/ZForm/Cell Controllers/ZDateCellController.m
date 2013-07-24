@@ -12,7 +12,6 @@
 @interface ZDateSubcellController ()
 
 @property (nonatomic, assign) CGFloat cellHeight;
-@property (nonatomic, assign) BOOL isSelectable;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 
 @end
@@ -22,7 +21,6 @@
 - (void)setup{
     self.cell = [[ZDateCell alloc]initWithReuseIdentifier:[NSString UUID]];
     self.cellHeight = 216;
-    self.isSelectable = NO;
     self.datePicker = self.cell.datePicker;
 }
 
@@ -49,7 +47,7 @@
 
 - (void)setDate:(NSDate *)date{
     self.childCellController.date = date;
-    [self setDetailText:[self.dateFormatter stringFromDate:date]];
+    [self.cell setDetailLabelText:[self.dateFormatter stringFromDate:date]];
 }
 
 - (NSDate *)date{
@@ -60,7 +58,7 @@
     self.date = datePicker.date;
 }
 
-- (id)value{
+- (id)cellValue{
     return self.date;
 }
 

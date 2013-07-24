@@ -35,8 +35,8 @@
     return form;
 }
 
-+ (UINavigationController *)modalFormWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)complpetionBlock{
-    ZFormViewController *form = [ZFormViewController formWithName:title model:model andCompletionBlock:complpetionBlock];
++ (UINavigationController *)modalFormWithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock{
+    ZFormViewController *form = [ZFormViewController formWithName:title model:model andCompletionBlock:completionBlock];
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:form];
     
     form.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -48,6 +48,12 @@
                                                                                           action:@selector(done:)];
     
     return navigationController;
+}
+
++ (void)presentModalFormOnTopOf:(UIViewController *)viewController WithName:(NSString *)title model:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock{
+
+    UINavigationController *modalForm = [[self class]modalFormWithName:title model:model andCompletionBlock:completionBlock];
+    [viewController presentViewController:modalForm animated:YES completion:NULL];
 }
 
 - (ZFormModel *)model{
