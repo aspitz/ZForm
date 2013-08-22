@@ -14,5 +14,6 @@
 @property (nonatomic, strong) ZTextFieldCell *cell;
 
 - (void)setPlaceholder:(NSString *)placeholder;
+- (void)setSecret:(BOOL)secret;
 
 @end

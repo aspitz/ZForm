@@ -22,6 +22,10 @@
     self.cell.placeholder = placeholder;
 }
 
+- (void)setSecret:(BOOL)secret{
+    self.cell.secret = secret;
+}
+
 - (id)cellValue{
     return self.cell.control.text;
 }

@@ -32,4 +32,8 @@
     self.control.placeholder = placeholder;
 }
 
+- (void)setSecret:(BOOL)secret{
+    self.control.secureTextEntry = secret;
+}
+
 @end

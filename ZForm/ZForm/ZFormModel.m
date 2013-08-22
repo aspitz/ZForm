@@ -89,19 +89,20 @@
             [self addTitle:title andDetail:attributes[@"detail"]];
             break;
         case ZFormModelTextFieldElement:
-            [self addTextFieldWithTitle:title andPlaceholder:attributes[@"placeholder"]];
+            [self addTextFieldWithTitle:title placeholder:attributes[@"placeholder"] andSecret:attributes[@"secret"]];
             break;
         default:
             break;
     }
 }
 
-- (void)addTextFieldWithTitle:(NSString *)title andPlaceholder:(NSString *)placeholder{
+- (void)addTextFieldWithTitle:(NSString *)title placeholder:(NSString *)placeholder andSecret:(NSNumber *)secret{
     ZTextFieldCellController *textFieldCellController = [[ZTextFieldCellController alloc]init];
     [textFieldCellController setLabelText:title];
     if (placeholder != nil){
         [textFieldCellController setPlaceholder:placeholder];
     }
+    [textFieldCellController setSecret:[secret boolValue]];
     textFieldCellController.delegate = self;
     [self addObject:textFieldCellController];
 }

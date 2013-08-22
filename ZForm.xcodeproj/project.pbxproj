@@ -151,6 +151,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		790EDC3F17B33323005ECF15 /* Third Party Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Third Party Classes";
+			sourceTree = "<group>";
+		};
 		7985300C179CBE1C00BC3BC5 /* Checkbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,7 +229,9 @@
 				79C4824A179B654500E2B9F9 /* ZViewController.m */,
 				79C4824C179B654500E2B9F9 /* Images.xcassets */,
 				79C48269179B655600E2B9F9 /* ZForm */,
+				79E7949717C5BB3C00E707F2 /* ZSimpleForm */,
 				79C4826A179B656000E2B9F9 /* Other Classes */,
+				790EDC3F17B33323005ECF15 /* Third Party Classes */,
 				79C4823B179B654400E2B9F9 /* Supporting Files */,
 			);
 			path = ZForm;
@@ -333,6 +342,13 @@
 				7989BF67179E2B74001189C9 /* ZTextFieldCell.m */,
 			);
 			name = "Cell Views";
+			sourceTree = "<group>";
+		};
+		79E7949717C5BB3C00E707F2 /* ZSimpleForm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ZSimpleForm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

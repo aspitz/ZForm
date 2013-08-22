@@ -13,5 +13,6 @@
 @property (nonatomic, strong) ZTextField *control;
 
 - (void)setPlaceholder:(NSString *)placeholder;
+- (void)setSecret:(BOOL)secret;
 
 @end

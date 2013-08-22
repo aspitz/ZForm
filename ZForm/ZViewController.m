@@ -31,6 +31,7 @@
     formModel.title = @"Form";
     [formModel add:ZFormModelTextElement withTitle:@"Title" andAttributes:@{@"detail":@"detail"}];
     [formModel add:ZFormModelTextFieldElement withTitle:@"Event Name:" andAttributes:@{@"placeholder":@"event"}];
+    [formModel add:ZFormModelTextFieldElement withTitle:@"Password:" andAttributes:@{@"secret":@YES}];
     [formModel add:ZFormModelDateElement withTitle:@"Start Date:"];
     [formModel add:ZFormModelDateElement withTitle:@"End Date:"];
     [formModel add:ZFormModelSwitchElement withTitle:@"Do something:"];
