@@ -39,6 +39,21 @@
     [self.required addObject:@(required)];
 }
 
+- (void)add:(ZSimpleFormElementType)elementType withValue:(NSString *)value isRequired:(BOOL)isRequired{
+    ZSimpleTextFieldCellType cellType = (ZSimpleTextFieldCellType)elementType;
+    ZSimpleTextFieldCell *cell = [ZSimpleTextFieldCell cellOfType:cellType withValue:value];
+    [self addCell:cell isRequired:isRequired];
+}
+
+- (void)addElementTitled:(NSString *)title andValue:(NSString *)value withAttributes:(NSDictionary *)attributes{
+    BOOL isRequired = [attributes[REQUIRED_KEY] boolValue];
+    BOOL isSecured = [attributes[SECURED_KEY] boolValue];
+    UIKeyboardType keyboardType = attributes[KEYBOARD_KEY] == nil ? UIKeyboardTypeDefault : [attributes[KEYBOARD_KEY] integerValue];
+    
+    ZSimpleTextFieldCell *cell = [ZSimpleTextFieldCell cellNamed:title withValue:value isSecured:isSecured keyboardType:keyboardType];
+    [self addCell:cell isRequired:isRequired];
+}
+
 #pragma mark - Access elements methods
 
 - (NSArray *)values{

@@ -52,7 +52,7 @@
 }
 
 + (void)presentModalFormOnTopOf:(UIViewController *)viewController withModel:(ZFormModel *)model andCompletionBlock:(FormCompletionBlock)completionBlock{
-
+    
     UINavigationController *modalForm = [[self class]modalFormWithModel:model andCompletionBlock:completionBlock];
     [viewController presentViewController:modalForm animated:YES completion:NULL];
 }

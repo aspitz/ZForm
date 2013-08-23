@@ -24,8 +24,8 @@
     if (self) {
         // build login model/view controller
         ZSimpleFormModel *loginFormModel = [ZSimpleFormModel model];
-        [loginFormModel addCell:[ZSimpleTextFieldCell cellOfType:ZSimpleTextFieldCellEMailType withValue:@""] isRequired:YES];
-        [loginFormModel addCell:[ZSimpleTextFieldCell cellOfType:ZSimpleTextFieldCellPasswordType withValue:@""] isRequired:YES];
+        [loginFormModel add:ZSimpleFormElementEMailType withValue:@"" isRequired:YES];
+        [loginFormModel add:ZSimpleFormElementPasswordType withValue:@"" isRequired:YES];
         loginFormModel.leftButtonTitle = @"Sign up";
         loginFormModel.leftButtonImage = [ZChevronImages leftChevron];
         loginFormModel.rightButtonTitle = @"Login";
@@ -46,11 +46,11 @@
         
         // build sign up model/view controller
         ZSimpleFormModel *signupFormModel = [ZSimpleFormModel model];
-        [signupFormModel addCell:[ZSimpleTextFieldCell cellNamed:@"First Name" withValue:@""] isRequired:YES];
-        [signupFormModel addCell:[ZSimpleTextFieldCell cellNamed:@"Last Name" withValue:@""] isRequired:YES];
-        [signupFormModel addCell:[ZSimpleTextFieldCell cellOfType:ZSimpleTextFieldCellZipcodeType withValue:@""] isRequired:YES];
-        [signupFormModel addCell:[ZSimpleTextFieldCell cellOfType:ZSimpleTextFieldCellEMailType withValue:@""] isRequired:YES];
-        [signupFormModel addCell:[ZSimpleTextFieldCell cellOfType:ZSimpleTextFieldCellPasswordType withValue:@""] isRequired:YES];
+        [signupFormModel addElementTitled:@"First Name" andValue:@"" withAttributes:@{REQUIRED_KEY:@YES}];
+        [signupFormModel addElementTitled:@"Last Name" andValue:@"" withAttributes:@{REQUIRED_KEY:@YES}];
+        [signupFormModel add:ZSimpleFormElementZipcodeType withValue:@"" isRequired:YES];
+        [signupFormModel add:ZSimpleFormElementEMailType withValue:@"" isRequired:YES];
+        [signupFormModel add:ZSimpleFormElementPasswordType withValue:@"" isRequired:YES];
         signupFormModel.leftButtonTitle = @"Cancel";
         signupFormModel.rightButtonTitle = @"Sign up";
         signupFormModel.rightButtonImage = [ZChevronImages rightChevron];
