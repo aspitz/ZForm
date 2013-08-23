@@ -19,18 +19,18 @@
 
 @implementation ZChevronImages
 
-+ (UIImage *)chevron1xScale:(NSString *)base64_1x and2xScale:(NSString *)base64_2x{
++ (UIImage *)image1xScale:(NSString *)base64_1x and2xScale:(NSString *)base64_2x{
     CGFloat screenScale = [[UIScreen mainScreen] scale];
-    NSData *chevronData = [NSData dataFromBase64String:screenScale == 1.0f ? base64_1x : base64_2x];
-    return [UIImage imageWithData:chevronData scale:screenScale];
+    NSData *imageData = [NSData dataFromBase64String:screenScale == 1.0f ? base64_1x : base64_2x];
+    return [UIImage imageWithData:imageData scale:screenScale];
 }
 
 + (UIImage *)leftChevron{
-    return [ZChevronImages chevron1xScale:LEFT_CHEVRON and2xScale:LEFT_CHEVRON_2X];
+    return [ZChevronImages image1xScale:LEFT_CHEVRON and2xScale:LEFT_CHEVRON_2X];
 }
 
 + (UIImage *)rightChevron{
-    return [ZChevronImages chevron1xScale:RIGHT_CHEVRON and2xScale:RIGHT_CHVERON_2X];
+    return [ZChevronImages image1xScale:RIGHT_CHEVRON and2xScale:RIGHT_CHVERON_2X];
 }
 
 @end

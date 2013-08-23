@@ -7,6 +7,7 @@
 //
 
 #import "ZCheckbox.h"
+#import "ZCheckmarkImages.h"
 
 @interface ZCheckbox ()
 @property (nonatomic, strong) UIImage *checkedImage;
@@ -19,8 +20,8 @@
 - (instancetype)initWithCheckedImageName:(NSString *)checkedImageName andUncheckedImageName:(NSString *)uncheckedImageName{
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        self.checkedImage = [UIImage imageNamed:checkedImageName];
-        self.uncheckedImage = [UIImage imageNamed:uncheckedImageName];
+        self.checkedImage = [ZCheckmarkImages checkmark];
+        self.uncheckedImage = [ZCheckmarkImages uncheckedmark];
         self.checked = NO;
         
         CGSize imageSize = self.checkedImage.size;
