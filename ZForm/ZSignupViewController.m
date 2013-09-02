@@ -23,12 +23,14 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.model = [ZSimpleFormModel model];
     [self.model add:@{TITLE_KEY:@"First Name", REQUIRED_KEY:@YES}];
     [self.model add:@{TITLE_KEY:@"Last Name", REQUIRED_KEY:@YES}];
     [self.model add:@{TYPE_KEY:@(ZSimpleFormElementEMailType), REQUIRED_KEY:@YES}];
+    [self.model add:@{TYPE_KEY:@(ZSimpleFormElementZipcodeType), REQUIRED_KEY:@YES}];
     [self.model add:@{TYPE_KEY:@(ZSimpleFormElementPasswordType), REQUIRED_KEY:@YES}];
     self.model.defaultTextAlignment = NSTextAlignmentCenter;
     
