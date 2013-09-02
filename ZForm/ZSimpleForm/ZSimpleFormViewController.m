@@ -1,90 +1,143 @@
 //
 //  ZSimpleFormViewController.m
-//  RegisterView
 //
-//  Created by Ayal Spitz on 8/9/13.
+//  Created by Ayal Spitz on 8/27/13.
 //  Copyright (c) 2013 Ayal Spitz. All rights reserved.
 //
 
 #import "ZSimpleFormViewController.h"
 #import "ZSimpleTextFieldCell.h"
-#import "ZSimpleFormView.h"
 #import "ZSimpleFormModel.h"
-#import "NSLayoutConstraint+Utilities.h"
-#import "ZButton.h"
 
 @interface ZSimpleFormViewController ()
 
-@property (nonatomic, strong) ZSimpleFormView *formView;
-@property (nonatomic, strong) ZSimpleFormModel *model;
-@property (copy) ZSimpleFormCompletionBlock completionBlock;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @end
 
 
 @implementation ZSimpleFormViewController
 
-
-+ (instancetype)formWithModel:(ZSimpleFormModel *)model andCompletionBlock:(ZSimpleFormCompletionBlock)complpetionBlock{
-    ZSimpleFormViewController *form = [[[self class]alloc]init];
-    form.model = model;
-    form.completionBlock = complpetionBlock;
-    
-    return form;
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.view.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        self.tableView = [[UITableView alloc]init];
+        self.tableView.dataSource = self;
+        [self.tableView registerClass:[ZSimpleTextFieldCell class] forCellReuseIdentifier:@"SIMPLE_TEXT_FIELD_CELL"];
+        self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:self.tableView];
+        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.tableView
+                                                              attribute:NSLayoutAttributeTop
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeTop
+                                                             multiplier:1.0
+                                                               constant:0.0]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.tableView
+                                                              attribute:NSLayoutAttributeBottom
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeBottom
+                                                             multiplier:1.0
+                                                               constant:0.0]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.tableView
+                                                              attribute:NSLayoutAttributeLeft
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeLeft
+                                                             multiplier:1.0
+                                                               constant:0.0]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.tableView
+                                                              attribute:NSLayoutAttributeRight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeRight
+                                                             multiplier:1.0
+                                                               constant:0.0]];
+    }
+    return self;
 }
 
-+ (void)presentModalFormOnTopOf:(UIViewController *)viewController withModel:(ZSimpleFormModel *)model andCompletionBlock:(ZSimpleFormCompletionBlock)completionBlock{
+#pragma mark - UITableViewDataSource Methods
 
-    ZSimpleFormViewController *modalForm = [[self class]formWithModel:model andCompletionBlock:completionBlock];
-    [viewController presentViewController:modalForm animated:YES completion:NULL];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{ return 1; }
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.model.count;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *kCellIdentifier =  @"SIMPLE_TEXT_FIELD_CELL";
+    
+    ZSimpleTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    [cell setFromDictionary:self.model[indexPath.row]];
+    
+    cell.textField.delegate = self;
+    if (self.showRequiredFlags){
+        cell.showRequiredFlag = [self.model isUnfulfilledRequiredElementAtIndex:indexPath.row];
+    }
 
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.formView = [[ZSimpleFormView alloc]init];
-    self.formView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:self.formView];
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithItem:self.formView equalToItem:self.view]];
-
-    __weak typeof(self) weakSelf = self;
-    
-    [self.formView setLeftButtonTitle:self.model.leftButtonTitle andImage:self.model.leftButtonImage];
-    self.formView.leftButton.buttonPressBlock = ^(ZButton *srcButton){
-        [weakSelf leftButtonAction:nil];
-    };
-    
-    [self.formView setRightButtonTitle:self.model.rightButtonTitle andImage:self.model.rightButtonImage];
-    self.formView.rightButton.buttonPressBlock = ^(ZButton *srcButton){
-        [weakSelf rightButtonAction:nil];
-    };
-    
-    self.formView.dataSource = self.model;
-}
-
-- (ZSimpleTextFieldCell *)newCellWithPlaceholder:(NSString *)placeholder{
-    ZSimpleTextFieldCell *cell = [[ZSimpleTextFieldCell alloc]init];
-    cell.textField.placeholder = placeholder;
-    cell.textField.textAlignment = NSTextAlignmentCenter;
     return cell;
 }
 
-- (IBAction)leftButtonAction:(id)sender{
-    [self.model clearRequiredFlags];
-    if (self.completionBlock){
-        self.completionBlock(SimpleFormButtonLeft, [self.model values]);
+#pragma mark - UITextFieldDelegate Methods
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSMutableString *newString = [NSMutableString stringWithString:textField.text];
+    [newString replaceCharactersInRange:range withString:string];
+    
+    ZSimpleTextFieldCell *cell = (ZSimpleTextFieldCell *)[[[textField superview]superview]superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    [self.model setValue:newString forIndex:indexPath.row];
+
+    cell.showRequiredFlag = [self.model isUnfulfilledRequiredElementAtIndex:indexPath.row];
+    [cell setNeedsDisplay];
+    
+    return YES;
+}
+
+#pragma mark - 
+
+- (BOOL)hasUnfulfilledRequiredElements{
+    return [self.model hasUnfulfilledRequiredElements];
+}
+
+- (void)flagUnfulfilledRequiredElements{
+    self.showRequiredFlags = YES;
+    NSIndexSet *unfulfilledRequiredInedxSet = [self.model unfulfilledRequiredElements];
+    
+    if (unfulfilledRequiredInedxSet.count != 0){
+        NSMutableArray *unfulfilledRequiredIndexPaths = [NSMutableArray array];
+        [unfulfilledRequiredInedxSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [unfulfilledRequiredIndexPaths addObject:[NSIndexPath indexPathForRow:idx inSection:0]];
+        }];
+        
+        [self.tableView reloadRowsAtIndexPaths:unfulfilledRequiredIndexPaths withRowAnimation:NO];
     }
 }
 
-- (IBAction)rightButtonAction:(id)sender{
-    if (![self.model hasUnfilledRequiredCells] && self.completionBlock){
-        self.completionBlock(SimpleFormButtonRight, [self.model values]);
+- (NSArray *)unfulfilledRequiredCellIndexPaths{
+    NSIndexSet *unfulfilledRequiredInedxSet = [self.model unfulfilledRequiredElements];
+    NSMutableArray *cellIndexPaths = nil;
+    
+    if (unfulfilledRequiredInedxSet.count != 0){
+        cellIndexPaths = [NSMutableArray array];
+        [unfulfilledRequiredInedxSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [cellIndexPaths addObject:[NSIndexPath indexPathForRow:idx inSection:0]];
+        }];
     }
+    
+    return cellIndexPaths;
+}
+
+- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation{
+    [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+}
+
+- (NSArray *)allValues{
+    return [self.model allValues];
 }
 
 @end

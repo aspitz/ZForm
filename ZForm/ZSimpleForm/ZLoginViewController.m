@@ -1,100 +1,126 @@
 //
 //  ZLoginViewController.m
-//  NavButtonSnoop
 //
-//  Created by Ayal Spitz on 8/21/13.
-//  Copyright (c) 2013 spitz. All rights reserved.
+//  Created by Ayal Spitz on 8/27/13.
+//  Copyright (c) 2013 Ayal Spitz. All rights reserved.
 //
 
 #import "ZLoginViewController.h"
-#import "ZButton.h"
-#import "ZChevronImages.h"
 #import "ZSimpleFormModel.h"
+#import "ZSimpleTextFieldCell.h"
 #import "ZSimpleFormViewController.h"
+#import "ZDrawView.h"
+#import "ZCircularButton.h"
+#import "ZChevronImages.h"
+#import "ZButton.h"
 
 @interface ZLoginViewController ()
-@property (nonatomic, strong) UIViewController *loginViewController;
-@property (nonatomic, strong) UIViewController *signUpViewController;
+
+@property (nonatomic, strong) ZSimpleFormViewController *simpleFormViewController;
+@property (nonatomic, strong) ZSimpleFormModel *model;
+
 @end
+
 
 @implementation ZLoginViewController
 
-- (id)init{
-    self = [super init];
-    if (self) {
-        // build login model/view controller
-        ZSimpleFormModel *loginFormModel = [ZSimpleFormModel model];
-        [loginFormModel add:ZSimpleFormElementEMailType withValue:@"" isRequired:YES];
-        [loginFormModel add:ZSimpleFormElementPasswordType withValue:@"" isRequired:YES];
-        loginFormModel.leftButtonTitle = @"Sign up";
-        loginFormModel.leftButtonImage = [ZChevronImages leftChevron];
-        loginFormModel.rightButtonTitle = @"Login";
-        loginFormModel.rightButtonImage = [ZChevronImages rightChevron];
-        self.loginViewController = [ZSimpleFormViewController formWithModel:loginFormModel andCompletionBlock:^(SimpleFormButtonSide buttonType, NSArray *values) {
-            if (buttonType == SimpleFormButtonLeft){
-                [self slideToSignupViewController];
-            }
-        }];
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
 
-        [self addChildViewController:self.loginViewController];
-        [self.view addSubview:self.loginViewController.view];
-        
-        CGRect frame = CGRectZero;
-        frame.size = self.view.frame.size;
-        self.loginViewController.view.frame = frame;
-        
-        
-        // build sign up model/view controller
-        ZSimpleFormModel *signupFormModel = [ZSimpleFormModel model];
-        [signupFormModel addElementTitled:@"First Name" andValue:@"" withAttributes:@{REQUIRED_KEY:@YES}];
-        [signupFormModel addElementTitled:@"Last Name" andValue:@"" withAttributes:@{REQUIRED_KEY:@YES}];
-        [signupFormModel add:ZSimpleFormElementZipcodeType withValue:@"" isRequired:YES];
-        [signupFormModel add:ZSimpleFormElementEMailType withValue:@"" isRequired:YES];
-        [signupFormModel add:ZSimpleFormElementPasswordType withValue:@"" isRequired:YES];
-        signupFormModel.leftButtonTitle = @"Cancel";
-        signupFormModel.rightButtonTitle = @"Sign up";
-        signupFormModel.rightButtonImage = [ZChevronImages rightChevron];
-        self.signUpViewController = [ZSimpleFormViewController formWithModel:signupFormModel andCompletionBlock:^(SimpleFormButtonSide buttonType, NSArray *values) {
-            if (buttonType == SimpleFormButtonLeft){
-                // clear form
-            }
-            [self slideToLoginViewController];
-        }];
-
-        [self addChildViewController:self.signUpViewController];
-        [self.view addSubview:self.signUpViewController.view];
-        
-        frame = CGRectZero;
-        frame.size = self.view.frame.size;
-        frame.origin.x = -self.view.frame.size.width;
-        self.signUpViewController.view.frame = frame;
-    }
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    return self;
-}
+    self.model = [ZSimpleFormModel model];
+    [self.model add:@{TYPE_KEY:@(ZSimpleFormElementEMailType), REQUIRED_KEY:@YES}];
+    [self.model add:@{TYPE_KEY:@(ZSimpleFormElementPasswordType), REQUIRED_KEY:@YES}];
+    self.model.defaultTextAlignment = NSTextAlignmentCenter;
+    
+    self.simpleFormViewController = [[ZSimpleFormViewController alloc]init];
+    self.simpleFormViewController.model = self.model;
+    
+    [self addChildViewController:self.simpleFormViewController];
+    [self.view addSubview:self.simpleFormViewController.view];
 
-- (void)slideToSignupViewController{
-    [UIView animateWithDuration:0.5 animations:^{
-        CGRect frame = self.signUpViewController.view.frame;
-        frame.origin.x += frame.size.width;
-        self.signUpViewController.view.frame = frame;
-        
-        frame = self.loginViewController.view.frame;
-        frame.origin.x += frame.size.width;
-        self.loginViewController.view.frame = frame;
-    }];
-}
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.simpleFormViewController.view
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1.0
+                                                           constant:60.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.simpleFormViewController.view
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:self.model.count * 44.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.simpleFormViewController.view
+                                                          attribute:NSLayoutAttributeLeft
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeLeft
+                                                         multiplier:1.0
+                                                           constant:40.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.simpleFormViewController.view
+                                                          attribute:NSLayoutAttributeRight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeRight
+                                                         multiplier:1.0
+                                                           constant:-40.0]];
 
-- (void)slideToLoginViewController{
-    [UIView animateWithDuration:0.5 animations:^{
-        CGRect frame = self.signUpViewController.view.frame;
-        frame.origin.x -= frame.size.width;
-        self.signUpViewController.view.frame = frame;
-        
-        frame = self.loginViewController.view.frame;
-        frame.origin.x -= frame.size.width;
-        self.loginViewController.view.frame = frame;
-    }];
+    self.simpleFormViewController.view.layer.cornerRadius = 5.0;
+    self.simpleFormViewController.view.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    self.simpleFormViewController.view.layer.borderWidth = 0.5;
+    self.simpleFormViewController.view.layer.masksToBounds = YES;
+    
+
+    ZButton *signupButton = [[ZButton alloc]initWithTitle:@"Sign up" andImage:[ZChevronImages leftChevron] aligned:ZImageAlignmentLeft];
+    [self.view addSubview:signupButton];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:signupButton
+                                                          attribute:NSLayoutAttributeLeft
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.simpleFormViewController.view
+                                                          attribute:NSLayoutAttributeLeft
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:signupButton
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.simpleFormViewController.view
+                                                          attribute:NSLayoutAttributeBottom
+                                                         multiplier:1.0
+                                                           constant:8.0]];
+
+    ZButton *loginButton = [[ZButton alloc]initWithTitle:@"Login" andImage:[ZChevronImages rightChevron] aligned:ZImageAlignmentRight];
+    loginButton.buttonPressBlock = ^(ZButton *button) {
+        NSArray *cellIndexPaths = [self.simpleFormViewController unfulfilledRequiredCellIndexPaths];
+        if (cellIndexPaths.count != 0){
+            self.simpleFormViewController.showRequiredFlags = YES;
+            [self.simpleFormViewController reloadRowsAtIndexPaths:cellIndexPaths withRowAnimation:UITableViewRowAnimationNone];
+            // put up a note to the user that they have to fill in all the marked fields
+        } else {
+            [self.simpleFormViewController allValues];
+            // we're ready to log in
+        }
+    };
+    [self.view addSubview:loginButton];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:loginButton
+                                                          attribute:NSLayoutAttributeRight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.simpleFormViewController.view
+                                                          attribute:NSLayoutAttributeRight
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:loginButton
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.simpleFormViewController.view
+                                                          attribute:NSLayoutAttributeBottom
+                                                         multiplier:1.0
+                                                           constant:8.0]];
+
 }
 
 @end

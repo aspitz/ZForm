@@ -1,6 +1,5 @@
 //
 //  ZSimpleFormBaseCell.h
-//  RegisterView
 //
 //  Created by Ayal Spitz on 8/17/13.
 //  Copyright (c) 2013 Ayal Spitz. All rights reserved.
@@ -10,7 +9,7 @@
 
 @interface ZSimpleFormBaseCell : UITableViewCell
 
-@property (assign) BOOL requiredFlagHidden;
+@property(nonatomic, assign, getter = isRequiredFlagHidden, setter = showRequiredFlag:) BOOL showRequiredFlag;
 
 - (void)setup;
 

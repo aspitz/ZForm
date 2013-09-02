@@ -1,6 +1,5 @@
 //
 //  ZSimpleFormBaseCell.m
-//  RegisterView
 //
 //  Created by Ayal Spitz on 8/17/13.
 //  Copyright (c) 2013 Ayal Spitz. All rights reserved.
@@ -69,13 +68,14 @@
 
 - (id)cellValue{ return nil; }
 
+#pragma mark - Required flag methods
 
-- (BOOL)requiredFlagHidden{
-    return self.requiredFlag.hidden;
+- (void)showRequiredFlag:(BOOL)show{
+    self.requiredFlag.hidden = !show;
 }
 
-- (void)setRequiredFlagHidden:(BOOL)hidden{
-    self.requiredFlag.hidden = hidden;
+- (BOOL)isRequiredFlagHidden{
+    return self.requiredFlag.hidden;
 }
 
 @end

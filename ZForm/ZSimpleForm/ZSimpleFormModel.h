@@ -1,6 +1,5 @@
 //
 //  ZSimpleFormModel.h
-//  RegisterView
 //
 //  Created by Ayal Spitz on 8/8/13.
 //  Copyright (c) 2013 Ayal Spitz. All rights reserved.
@@ -17,24 +16,22 @@ typedef NS_ENUM(NSUInteger,ZSimpleFormElementType){
 };
 
 #define REQUIRED_KEY @"requiredKey"
-#define SECURED_KEY @"securedKey"
-#define KEYBOARD_KEY @"keyboardKey"
 
-@interface ZSimpleFormModel : NSObject <UITableViewDataSource>
+@interface ZSimpleFormModel : NSObject
 
-@property (copy) NSString *leftButtonTitle;
-@property (copy) NSString *rightButtonTitle;
-@property (nonatomic, strong) UIImage *leftButtonImage;
-@property (nonatomic, strong) UIImage *rightButtonImage;
+@property (nonatomic, readonly) NSUInteger count;
+@property (nonatomic, assign) NSTextAlignment defaultTextAlignment;
 
 + (instancetype)model;
 
-- (NSArray *)values;
-- (BOOL)hasUnfilledRequiredCells;
-- (void)clearRequiredFlags;
+- (void)add:(NSDictionary *)elementDictionary;
 
-- (void)addCell:(ZSimpleTextFieldCell *)cell isRequired:(BOOL)required;
-- (void)add:(ZSimpleFormElementType)elementType withValue:(NSString *)value isRequired:(BOOL)isRequired;
-- (void)addElementTitled:(NSString *)title andValue:(NSString *)value withAttributes:(NSDictionary *)attributes;
+- (id)objectAtIndexedSubscript:(NSUInteger)idx;
+- (void)setValue:(NSString *)value forIndex:(NSUInteger)idx;
+- (NSArray *)allValues;
+
+- (NSIndexSet *)unfulfilledRequiredElements;
+- (BOOL)hasUnfulfilledRequiredElements;
+- (BOOL)isUnfulfilledRequiredElementAtIndex:(NSUInteger)idx;
 
 @end

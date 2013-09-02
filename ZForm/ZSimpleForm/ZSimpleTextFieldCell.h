@@ -1,12 +1,18 @@
 //
 //  ZSimpleTextFieldCell.h
-//  RegisterView
 //
 //  Created by Ayal Spitz on 8/7/13.
 //  Copyright (c) 2013 Ayal Spitz. All rights reserved.
 //
 
 #import "ZSimpleFormBaseCell.h"
+
+#define SECURED_KEY @"securedKey"
+#define KEYBOARD_KEY @"keyboardKey"
+#define VALUE_KEY @"valueKey"
+#define TYPE_KEY @"typeKey"
+#define TITLE_KEY @"titleKey"
+#define TEXT_ALIGNMENT_KEY @"textAlignmentKey"
 
 typedef NS_ENUM(NSUInteger, ZSimpleTextFieldCellType){
     ZSimpleTextFieldCellEMailType,
@@ -19,8 +25,7 @@ typedef NS_ENUM(NSUInteger, ZSimpleTextFieldCellType){
 
 @property (nonatomic, strong) UITextField *textField;
 
-+ (ZSimpleTextFieldCell *)cellNamed:(NSString *)name withValue:(NSString *)value isSecured:(BOOL)secured keyboardType:(UIKeyboardType)keyboardType;
-+ (ZSimpleTextFieldCell *)cellNamed:(NSString *)name withValue:(NSString *)value;
-+ (ZSimpleTextFieldCell *)cellOfType:(ZSimpleTextFieldCellType)type withValue:(NSString *)value;
++ (ZSimpleTextFieldCell *)cellFromDictionary:(NSDictionary *)dictionary;
+- (void)setFromDictionary:(NSDictionary *)srcDictionary;
 
 @end

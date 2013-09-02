@@ -1,6 +1,5 @@
 //
 //  ZSimpleFormModel.m
-//  RegisterView
 //
 //  Created by Ayal Spitz on 8/8/13.
 //  Copyright (c) 2013 Ayal Spitz. All rights reserved.
@@ -11,8 +10,7 @@
 
 @interface ZSimpleFormModel ()
 
-@property (nonatomic, strong) NSMutableArray *model;
-@property (nonatomic, strong) NSMutableArray *required;
+@property (nonatomic, strong) NSMutableArray *array;
 
 @end
 
@@ -22,8 +20,8 @@
 - (instancetype)init{
     self = [super init];
     if (self) {
-        self.model = [NSMutableArray array];
-        self.required = [NSMutableArray array];
+        self.array = [NSMutableArray array];
+        self.defaultTextAlignment = NSTextAlignmentLeft;
     }
     return self;
 }
@@ -34,67 +32,76 @@
 
 #pragma mark - Build Model methods
 
-- (void)addCell:(ZSimpleTextFieldCell *)cell isRequired:(BOOL)required{
-    [self.model addObject:cell];
-    [self.required addObject:@(required)];
+- (void)add:(NSDictionary *)elementDictionary{
+    [self.array addObject:[elementDictionary mutableCopy]];
 }
 
-- (void)add:(ZSimpleFormElementType)elementType withValue:(NSString *)value isRequired:(BOOL)isRequired{
-    ZSimpleTextFieldCellType cellType = (ZSimpleTextFieldCellType)elementType;
-    ZSimpleTextFieldCell *cell = [ZSimpleTextFieldCell cellOfType:cellType withValue:value];
-    [self addCell:cell isRequired:isRequired];
+#pragma mark -
+
+- (NSUInteger)count{
+    return self.array.count;
 }
 
-- (void)addElementTitled:(NSString *)title andValue:(NSString *)value withAttributes:(NSDictionary *)attributes{
-    BOOL isRequired = [attributes[REQUIRED_KEY] boolValue];
-    BOOL isSecured = [attributes[SECURED_KEY] boolValue];
-    UIKeyboardType keyboardType = attributes[KEYBOARD_KEY] == nil ? UIKeyboardTypeDefault : [attributes[KEYBOARD_KEY] integerValue];
+- (id)objectAtIndexedSubscript:(NSUInteger)idx{
+    NSMutableDictionary *elementDictionary = self.array[idx];
+    if (elementDictionary[TEXT_ALIGNMENT_KEY] == nil){
+        elementDictionary[TEXT_ALIGNMENT_KEY] = @(self.defaultTextAlignment);
+    }
     
-    ZSimpleTextFieldCell *cell = [ZSimpleTextFieldCell cellNamed:title withValue:value isSecured:isSecured keyboardType:keyboardType];
-    [self addCell:cell isRequired:isRequired];
+    return elementDictionary;
 }
 
-#pragma mark - Access elements methods
+- (void)setValue:(NSString *)value forIndex:(NSUInteger)idx{
+    NSMutableDictionary *dictionary = self.array[idx];
+    dictionary[VALUE_KEY] = value;
+}
 
-- (NSArray *)values{
-    NSMutableArray *values = [NSMutableArray array];
-    [self.model enumerateObjectsUsingBlock:^(ZSimpleTextFieldCell *cell, NSUInteger idx, BOOL *stop) {
-        [values addObject:cell.cellValue];
+- (NSArray *)allValues{
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.array.count];
+    [self.array enumerateObjectsUsingBlock:^(NSDictionary *elementDictionary, NSUInteger idx, BOOL *stop) {
+        NSString *value = elementDictionary[VALUE_KEY];
+        if (value.length == 0){
+            value = @"";
+        }
+        [array addObject:value];
     }];
-    return values;
+    
+    return array;
 }
 
-- (BOOL)hasUnfilledRequiredCells{
-    __block BOOL hasUnfilledRequiredCells = NO;
+#pragma mark - Unfulfilled required element methods
+
+- (BOOL)isUnfulfilledRequiredElement:(NSDictionary *)dictionary{
+    BOOL isRequired = [dictionary[REQUIRED_KEY] boolValue];
+    NSString *value = dictionary[VALUE_KEY];
     
-    [self.model enumerateObjectsUsingBlock:^(ZSimpleTextFieldCell *cell, NSUInteger idx, BOOL *stop) {
-        if (([self.required[idx] boolValue]) && [cell isEmpty]){
-            cell.requiredFlagHidden = NO;
-            hasUnfilledRequiredCells = YES;
+    return isRequired && (value.length == 0);
+}
+
+- (BOOL)hasUnfulfilledRequiredElements{
+    __block BOOL flag = NO;
+    [self.array enumerateObjectsUsingBlock:^(NSDictionary *dictionary, NSUInteger idx, BOOL *stop) {
+        flag = [self isUnfulfilledRequiredElement:dictionary];
+        *stop = flag;
+    }];
+
+    return flag;
+}
+
+- (BOOL)isUnfulfilledRequiredElementAtIndex:(NSUInteger)idx{
+    return [self isUnfulfilledRequiredElement:self.array[idx]];
+}
+
+- (NSIndexSet *)unfulfilledRequiredElements{
+    NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
+    
+    [self.array enumerateObjectsUsingBlock:^(NSDictionary *dictionary, NSUInteger idx, BOOL *stop) {
+        if ([self isUnfulfilledRequiredElement:dictionary]){
+            [indexSet addIndex:idx];
         }
     }];
-
-    return hasUnfilledRequiredCells;
-}
-
-- (void)clearRequiredFlags{
-    [self.model enumerateObjectsUsingBlock:^(ZSimpleTextFieldCell *cell, NSUInteger idx, BOOL *stop) {
-        cell.requiredFlagHidden = YES;
-    }];
-}
-
-#pragma mark - UITableViewDataSource Methods
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.model.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.model[indexPath.row];
+    
+    return indexSet;
 }
 
 @end
