@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7913396F17D52FF000A5543C /* ZCircularButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7913396E17D52FF000A5543C /* ZCircularButton.m */; };
-		7913397617D533E300A5543C /* ZSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7913397517D533E300A5543C /* ZSignupViewController.m */; };
 		7989BF46179E2A7F001189C9 /* ZCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF45179E2A7F001189C9 /* ZCheckbox.m */; };
 		7989BF49179E2A88001189C9 /* ZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF48179E2A88001189C9 /* ZTextField.m */; };
 		7989BF52179E2AEB001189C9 /* NSIndexPath+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF4B179E2AEB001189C9 /* NSIndexPath+Utilities.m */; };
@@ -54,7 +53,6 @@
 		79E794B017C5BCDC00E707F2 /* ZFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E794AE17C5BCDC00E707F2 /* ZFlag.m */; };
 		79E794B617C5BD2500E707F2 /* ZSimpleFormBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E794B317C5BD2500E707F2 /* ZSimpleFormBaseCell.m */; };
 		79E794B717C5BD2500E707F2 /* ZSimpleTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E794B517C5BD2500E707F2 /* ZSimpleTextFieldCell.m */; };
-		79E794C017C5BD5E00E707F2 /* ZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E794B917C5BD5E00E707F2 /* ZLoginViewController.m */; };
 		79E794C117C5BD5E00E707F2 /* ZSimpleFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E794BB17C5BD5E00E707F2 /* ZSimpleFormModel.m */; };
 		79E794C217C5BD5E00E707F2 /* ZSimpleFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E794BD17C5BD5E00E707F2 /* ZSimpleFormView.m */; };
 		79E794C317C5BD5E00E707F2 /* ZSimpleFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E794BF17C5BD5E00E707F2 /* ZSimpleFormViewController.m */; };
@@ -73,8 +71,6 @@
 /* Begin PBXFileReference section */
 		7913396D17D52FF000A5543C /* ZCircularButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCircularButton.h; sourceTree = "<group>"; };
 		7913396E17D52FF000A5543C /* ZCircularButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCircularButton.m; sourceTree = "<group>"; };
-		7913397417D533E300A5543C /* ZSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSignupViewController.h; sourceTree = "<group>"; };
-		7913397517D533E300A5543C /* ZSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSignupViewController.m; sourceTree = "<group>"; };
 		795543AA179F836000F51162 /* ZForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZForm.h; path = ZForm/ZForm.h; sourceTree = "<group>"; };
 		7989BF44179E2A7F001189C9 /* ZCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZCheckbox.h; path = ZForm/Controls/Checkbox/ZCheckbox.h; sourceTree = "<group>"; };
 		7989BF45179E2A7F001189C9 /* ZCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZCheckbox.m; path = ZForm/Controls/Checkbox/ZCheckbox.m; sourceTree = "<group>"; };
@@ -157,8 +153,6 @@
 		79E794B317C5BD2500E707F2 /* ZSimpleFormBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSimpleFormBaseCell.m; path = ZSimpleForm/ZSimpleFormBaseCell.m; sourceTree = "<group>"; };
 		79E794B417C5BD2500E707F2 /* ZSimpleTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSimpleTextFieldCell.h; path = ZSimpleForm/ZSimpleTextFieldCell.h; sourceTree = "<group>"; };
 		79E794B517C5BD2500E707F2 /* ZSimpleTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSimpleTextFieldCell.m; path = ZSimpleForm/ZSimpleTextFieldCell.m; sourceTree = "<group>"; };
-		79E794B817C5BD5E00E707F2 /* ZLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZLoginViewController.h; path = ZSimpleForm/ZLoginViewController.h; sourceTree = "<group>"; };
-		79E794B917C5BD5E00E707F2 /* ZLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZLoginViewController.m; path = ZSimpleForm/ZLoginViewController.m; sourceTree = "<group>"; };
 		79E794BA17C5BD5E00E707F2 /* ZSimpleFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSimpleFormModel.h; path = ZSimpleForm/ZSimpleFormModel.h; sourceTree = "<group>"; };
 		79E794BB17C5BD5E00E707F2 /* ZSimpleFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSimpleFormModel.m; path = ZSimpleForm/ZSimpleFormModel.m; sourceTree = "<group>"; };
 		79E794BC17C5BD5E00E707F2 /* ZSimpleFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSimpleFormView.h; path = ZSimpleForm/ZSimpleFormView.h; sourceTree = "<group>"; };
@@ -369,10 +363,6 @@
 		79E7949717C5BB3C00E707F2 /* ZSimpleForm */ = {
 			isa = PBXGroup;
 			children = (
-				79E794B817C5BD5E00E707F2 /* ZLoginViewController.h */,
-				79E794B917C5BD5E00E707F2 /* ZLoginViewController.m */,
-				7913397417D533E300A5543C /* ZSignupViewController.h */,
-				7913397517D533E300A5543C /* ZSignupViewController.m */,
 				79E794BA17C5BD5E00E707F2 /* ZSimpleFormModel.h */,
 				79E794BB17C5BD5E00E707F2 /* ZSimpleFormModel.m */,
 				79E794BC17C5BD5E00E707F2 /* ZSimpleFormView.h */,
@@ -542,7 +532,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7989BF6B179E2B74001189C9 /* ZSwitchCell.m in Sources */,
-				79E794C017C5BD5E00E707F2 /* ZLoginViewController.m in Sources */,
 				7989BF5B179E2B12001189C9 /* ZFormViewController.m in Sources */,
 				79E7949F17C5BC3800E707F2 /* NSData+Base64.m in Sources */,
 				79E794B617C5BD2500E707F2 /* ZSimpleFormBaseCell.m in Sources */,
@@ -558,7 +547,6 @@
 				79E794B717C5BD2500E707F2 /* ZSimpleTextFieldCell.m in Sources */,
 				7989BF55179E2AEB001189C9 /* UIView+ViewSearch.m in Sources */,
 				7989BF7B179E2BFF001189C9 /* ZCheckboxCellController.m in Sources */,
-				7913397617D533E300A5543C /* ZSignupViewController.m in Sources */,
 				7989BF53179E2AEB001189C9 /* NSString+Utilities.m in Sources */,
 				7989BF7A179E2BFF001189C9 /* ZCellController.m in Sources */,
 				7989BF69179E2B74001189C9 /* ZDateCell.m in Sources */,

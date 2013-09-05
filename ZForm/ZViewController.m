@@ -8,7 +8,7 @@
 
 #import "ZViewController.h"
 #import "ZForm.h"
-#import "ZLoginViewController.h"
+//#import "ZLoginViewController.h"
 
 @interface ZViewController ()
 
@@ -44,8 +44,8 @@
 //        [self dismissViewControllerAnimated:YES completion:NULL];
 //    }];
 
-    ZLoginViewController *loginViewController = [[ZLoginViewController alloc]init];
-    [self presentViewController:loginViewController animated:YES completion:NULL];
+//    ZLoginViewController *loginViewController = [[ZLoginViewController alloc]init];
+//    [self presentViewController:loginViewController animated:YES completion:NULL];
 }
 
 @end
