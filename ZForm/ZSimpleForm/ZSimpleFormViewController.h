@@ -14,9 +14,12 @@
 @property (nonatomic, strong) ZSimpleFormModel *model;
 @property (nonatomic, assign) BOOL showRequiredFlags;
 
+@property (nonatomic, strong) UITextField *firstTextField;
+
 - (BOOL)hasUnfulfilledRequiredElements;
 - (void)flagUnfulfilledRequiredElements;
 - (NSArray *)unfulfilledRequiredCellIndexPaths;
+- (void)clearUnfilledRequiredFlags;
 
 - (NSArray *)allValues;
 

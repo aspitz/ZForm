@@ -77,8 +77,14 @@
     cell.textField.delegate = self;
     if (self.showRequiredFlags){
         cell.showRequiredFlag = [self.model isUnfulfilledRequiredElementAtIndex:indexPath.row];
+    } else {
+        cell.showRequiredFlag = NO;
     }
 
+    if (self.firstTextField == nil){
+        self.firstTextField = cell.textField;
+    }
+    
     return cell;
 }
 
@@ -130,6 +136,12 @@
     }
     
     return cellIndexPaths;
+}
+
+- (void)clearUnfilledRequiredFlags{
+    self.showRequiredFlags = NO;
+    self.firstTextField = nil;
+    [self.tableView reloadData];
 }
 
 - (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation{

@@ -42,6 +42,8 @@
 }
 
 - (void)setup{
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+
     [self.contentView removeConstraints:self.contentView.constraints];
     
     self.requiredFlag = [[ZFlag alloc]init];

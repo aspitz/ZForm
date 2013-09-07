@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, ZImageAlignment){
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) UIImage *image;
 @property (nonatomic, assign) ZImageAlignment imageAlignment;
-@property (nonatomic, copy) void(^buttonPressBlock)(ZButton *);
+@property (nonatomic, copy) void(^buttonPressBlock)(ZButton *srcButton);
 
 
 - (instancetype)initWithTitle:(NSString *)title andImage:(UIImage *)image aligned:(ZImageAlignment)aligned;
