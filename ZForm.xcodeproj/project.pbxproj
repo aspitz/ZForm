@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7912CBB217FA7B750049D3B5 /* ZButton2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912CBB117FA7B750049D3B5 /* ZButton2.m */; };
 		7913396F17D52FF000A5543C /* ZCircularButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7913396E17D52FF000A5543C /* ZCircularButton.m */; };
 		7989BF46179E2A7F001189C9 /* ZCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF45179E2A7F001189C9 /* ZCheckbox.m */; };
 		7989BF49179E2A88001189C9 /* ZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7989BF48179E2A88001189C9 /* ZTextField.m */; };
@@ -69,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7912CBB017FA7B750049D3B5 /* ZButton2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZButton2.h; sourceTree = "<group>"; };
+		7912CBB117FA7B750049D3B5 /* ZButton2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZButton2.m; sourceTree = "<group>"; };
 		7913396D17D52FF000A5543C /* ZCircularButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCircularButton.h; sourceTree = "<group>"; };
 		7913396E17D52FF000A5543C /* ZCircularButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCircularButton.m; sourceTree = "<group>"; };
 		795543AA179F836000F51162 /* ZForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZForm.h; path = ZForm/ZForm.h; sourceTree = "<group>"; };
@@ -414,6 +417,8 @@
 			children = (
 				79E794AB17C5BCDC00E707F2 /* ZButton.h */,
 				79E794AC17C5BCDC00E707F2 /* ZButton.m */,
+				7912CBB017FA7B750049D3B5 /* ZButton2.h */,
+				7912CBB117FA7B750049D3B5 /* ZButton2.m */,
 				7913396D17D52FF000A5543C /* ZCircularButton.h */,
 				7913396E17D52FF000A5543C /* ZCircularButton.m */,
 				79E794AD17C5BCDC00E707F2 /* ZFlag.h */,
@@ -545,6 +550,7 @@
 				799CE06817C5BEC500DA7D7A /* ZCheckmarkImages.m in Sources */,
 				79E794A117C5BC3800E707F2 /* UINavigationController+Animation.m in Sources */,
 				79E794B717C5BD2500E707F2 /* ZSimpleTextFieldCell.m in Sources */,
+				7912CBB217FA7B750049D3B5 /* ZButton2.m in Sources */,
 				7989BF55179E2AEB001189C9 /* UIView+ViewSearch.m in Sources */,
 				7989BF7B179E2BFF001189C9 /* ZCheckboxCellController.m in Sources */,
 				7989BF53179E2AEB001189C9 /* NSString+Utilities.m in Sources */,
